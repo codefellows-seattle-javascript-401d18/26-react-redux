@@ -1,0 +1,50 @@
+// new color pallete all colors are kind of dusty
+// #96858F -Dusty -dark reddish lavendar maybe
+// #6D7993 -Lavendar
+// #9099A2 -Overcast -grey
+// #D5D5D5 -Paper -whiteish
+
+$white: #D5D5D5;
+$primary: #9099A2;
+$font-primary: 'arial';
+$gutter-sm: 1.5vw;
+$gutter-lg: $gutter-sm * 2;
+
+* {
+  max-width: 100em;
+}
+
+body {
+  font-family: $font-primary;
+  background-color: $white;
+  text-align: center;
+  background-size: cover;
+  background-position: fixed;
+  background-repeat: no-repeat;
+  max-width: 100%;
+}
+main {
+  background-color: $primary;
+  width: 960px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.app-header {
+  background: #FEA680;
+
+  nav li {
+    list-style: none;
+    display: inline;
+    padding: $gutter-lg;
+  }
+}
+
+.application {
+  padding: $gutter-lg;
+  background: #FEDC3D;
+
+  pre {
+    max-width: 75em;
+  }
+}

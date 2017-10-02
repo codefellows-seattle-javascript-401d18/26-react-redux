@@ -2,17 +2,22 @@
 
 // import React from 'react'
 
-intialState: [];
+// id - a unique identifier
+// timestamp - a date from when the category was created
+// name - a string that is the name of the category
+// budget - a number that is the total amount of money in the category
 
-reducer = (state=intialState, action) (
-  let {type, payload} = action
+let intialState = []
+
+export default (state=intialState, action) (
+  let {payload, type} = action;
     switch(type) {
       case 'CATEGORY_CREATE':
         return [...state, payload]
       case 'CATEGORY_UPDATE':
-        return [...state, payload]
+        return state.map(category => category.id == payload.id ? payload : category)
       case 'CATEGORY_DELETE':
-        return [...state, payload]
+        return state.filter(category => category.id !== payload.id)
       default: return state
     }
 )

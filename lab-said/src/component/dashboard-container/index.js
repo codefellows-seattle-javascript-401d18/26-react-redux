@@ -10,9 +10,6 @@ import CategoryForm from '../category-form';
 class DashboardContainer extends React.Component {
   componentDidMount() {
     console.log('__DASHBOARD__', this);
-    this.props.categoryCreate({title: 'groceries'});
-    this.props.categoryCreate({title: 'shoes'});
-    this.props.categoryCreate({title: 'stuff'});
   }
 
   render() {
@@ -28,7 +25,7 @@ class DashboardContainer extends React.Component {
           <div>
             {this.props.categories.map(item => {
               return <div key={item.id}>
-                <h3>{item.title}</h3></div>;
+                <h3>Item name: {item.title}.  <span> Item cost : ${item.budget}. </span></h3></div>;
 
             })}
           </div> :

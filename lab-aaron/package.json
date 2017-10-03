@@ -1,7 +1,7 @@
 {
-  "name": "26-expense-tracker",
+  "name": "26-category-tracker",
   "version": "1.0.0",
-  "description": "expense tracker",
+  "description": "category tracker",
   "main": "webpack.config.js",
   "scripts": {
     "build": "webpack",

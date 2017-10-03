@@ -21,7 +21,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <section className="expense-form">
+      <section className="category-form">
         <Provider store={store}>
           <BrowserRouter>
             <section>

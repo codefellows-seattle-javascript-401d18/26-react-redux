@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-class ExpenseForm extends React.Component {
+class categoryForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: props.expense ? props.expense.title : '',
+      title: props.category ? props.category.title : '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -23,11 +23,11 @@ class ExpenseForm extends React.Component {
 
   render() {
     return (
-      <form className="expense-form" onSubmit={this.handleSubmit}>
+      <form className="category-form" onSubmit={this.handleSubmit}>
         <input
           type="text"
           name="name"
-          placeholder="Enter Your Expense!"
+          placeholder="Enter Your Category!"
           value={this.state.title }
           onChange={this.handleChange}/>
 
@@ -37,4 +37,4 @@ class ExpenseForm extends React.Component {
   }
 }
 
-export default ExpenseForm;
+export default categoryForm;

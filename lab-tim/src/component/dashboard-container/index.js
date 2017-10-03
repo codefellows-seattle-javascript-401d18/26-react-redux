@@ -20,7 +20,7 @@ class DashboardContainer extends React.Component {
     return (
       <main className="main-content">
 
-         <h2>Dashboard</h2>
+        <h2>Dashboard</h2>
         <CategoryForm
           buttonText='create expense'
           onComplete={this.props.categoryCreate} />
@@ -30,8 +30,8 @@ class DashboardContainer extends React.Component {
               <CategoryItem
                 key={item.id}
                 category={item}
-                categoryDelete={this.props.categoryDelete}
-                categoryUpdate={this.props.categoryUpdate}
+                //categoryDelete={this.props.categoryDelete}
+                //categoryUpdate={this.props.categoryUpdate}
               />
             );
           }

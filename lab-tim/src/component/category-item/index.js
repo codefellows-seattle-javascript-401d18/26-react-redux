@@ -1,15 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
-  categoryUpdate,
-  categoryDelete,
+  categoryUpdate as categoryActionUpdate,
+  categoryDelete as categoryActionDelete,
 } from '../../action/category-actions';
 import CategoryForm from '../category-form';
 
 class CategoryItem  extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     return (
@@ -20,19 +20,25 @@ class CategoryItem  extends React.Component {
           onComplete={this.props.categoryUpdate}
           category={this.props.category}
         />
-        <button className='delete-button' onClick={()=>this.props.categoryDelete(this.props.category)}>X</button>
+        <button onClick={()=>this.props.categoryDelete(this.props.category)}>X</button>
       </li>
     );
   }
 }
 
+// const mapStateToProps = (state) => {
+//   return {
+//     categories: state,
+//   };
+// };
+
 const mapDispatchToProps = (dispatch, getState) => {
   return {
-    categoryUpdate: (category) => dispatch(categoryUpdate(category)),
-    categoryDelete: (category) => dispatch(categoryDelete(category)),
+    categoryUpdate: (category) => dispatch(categoryActionUpdate(category)),
+    categoryDelete: (category) => dispatch(categoryActionDelete(category)),
   };
 };
 
-export default connect(mapDispatchToProps)(CategoryItem);
+export default connect(null, mapDispatchToProps)(CategoryItem);
 
 //export default CategoryItem;

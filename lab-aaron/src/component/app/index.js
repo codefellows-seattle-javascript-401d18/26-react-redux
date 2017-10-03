@@ -8,7 +8,7 @@ const store = createAppStore();
 
 class App extends React.Component {
   constructor(props) {
-    super(props),
+    super(props);
   }
 
   componentDidMount() {
@@ -29,7 +29,8 @@ class App extends React.Component {
             </section>
           </BrowserRouter>
         </Provider>
-      </section>          
+      </section>
     );
   }
 }
+export default App;

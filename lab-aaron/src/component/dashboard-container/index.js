@@ -4,7 +4,7 @@ import {
   expenseCreate,
   expenseUpdate,
   expenseDelete,
-} from '../../action/expense-form';
+} from '../../action/expense-actions';
 import ExpenseForm from '../expense-form';
 
 class DashBoardContainer extends React.Component {

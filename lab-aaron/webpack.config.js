@@ -12,10 +12,10 @@ const UglifyPlugin = require('uglifyjs-webpack-plugin');
 const plugins = [
   new EnvironmentPlugin('NODE_ENV'),
   new ExtractTextPlugin('bundle-[hash].css'),
-  new HtmlPlugin({ template: `${__dirname}/src/index.html` });
+  new HtmlPlugin({ template: `${__dirname}/src/index.html` }),
   new DefinePlugin({
     __DEBUG__: JSON.stringify(!production),
-  });
+  })
 ];
 
 if(production)  {

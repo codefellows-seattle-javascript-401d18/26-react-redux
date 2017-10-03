@@ -12,8 +12,9 @@ import CategoryItem from '../category-item';
 class DashboardContainer extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props, 'props');
     this.state = {
-      totalSpent: this.props.categories.reduce((a, b) => a + parseInt(b.budget), 0),
+      // totalSpent: this.props.categories.reduce((a, b) => a + parseInt(b.budget), 0),
       test: 0,
     };
   }
@@ -23,7 +24,9 @@ class DashboardContainer extends React.Component {
     this.props.categoryCreate({title: 'Dining Out', budget: '500'});
   }
 
-
+  componentDidReceiveProps(){
+    console.log(this.props, ';lakjsd;kjfas;kdfjk');
+  }
 
   render() {
     return (

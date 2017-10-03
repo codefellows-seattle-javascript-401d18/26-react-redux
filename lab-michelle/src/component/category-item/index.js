@@ -1,4 +1,5 @@
 import React from 'react';
+import CategoryForm from '../category-form';
 import uuid from 'uuid/v4';
 
 class CategoryItem extends React.Component {
@@ -10,25 +11,19 @@ class CategoryItem extends React.Component {
       budget: 100,
       //do they need a category?//
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.onComplete(Object.assign({}, this.state));
   }
 
   handleClick(e){
     e.preventDefault();
-//SOMETHING
+    this.props.categoryDestroy(e.target.value = e.target.name)
   }
 
   render() {
     return (
-      <form className ="category-form" onSubmit = {this.handleSubmit} onClick = {this.handleClick}>
-      <button type = "submit"> {this.props.buttonText}</button>
-      </form>
+      <button onClick={this.handleClick}>delete</button>
+      <CategoryForm />
+
     );
   }
 }

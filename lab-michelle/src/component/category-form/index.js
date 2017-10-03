@@ -10,6 +10,14 @@ class CategoryForm extends React.Component {
 }
 
 
+<form className ="category-form" onSubmit = {this.handleSubmit} onClick = {this.handleClick}>
+<button type = "submit"> {this.props.buttonText}</button>
+</form>
+handleSubmit(e) {
+  e.preventDefault();
+  this.props.onComplete(Object.assign({}, this.state));
+}
+
 
 
 

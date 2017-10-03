@@ -1,6 +1,6 @@
-let intialState = [];
+let initialState = [];
 
-export default (state=intialState, action) => {
+export default (state=initialState, action) => {
   let {payload, type} = action;
 
   switch(type) {

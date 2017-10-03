@@ -1,5 +1,5 @@
 # Lab 26 Learning the Front End Part 3
-This app is an expense tracker that can take a budget and reduce your balance as you input expenses.
+This app is an category tracker that can take a budget and reduce your balance as you input categorys.
 
 ## Using the App
 

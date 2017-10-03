@@ -1,35 +1,35 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
-  expenseCreate,
-  expenseUpdate,
-  expenseDelete,
-} from '../../action/expense-actions';
-import ExpenseForm from '../expense-form';
+  categoryCreate,
+  categoryUpdate,
+  categoryDelete,
+} from '../../action/category-actions';
+import categoryForm from '../category-form';
 
 class DashBoardContainer extends React.Component {
   componentDidMount() {
     console.log('__DASHBOARD__'. this);
-    this.props.expenseCreate({title: 'use me maybe?'});
+    this.props.categoryCreate({title: 'use me maybe?'});
   }
 
   render() {
     return (
       <main className="main-content">
-        <h2>Expense DashBoard</h2>
-        <ExpenseForm
+        <h2>Category DashBoard</h2>
+        <categoryForm
           buttontext="create"
-          onComplete={this.props.expenseCreate}/>
+          onComplete={this.props.categoryCreate}/>
 
-        {this.props.expenses.length ?
+        {this.props.categories.length ?
           <div>
-            {this.props.expenses.map(item => {
+            {this.props.categories.map(item => {
               return <div key={item.id}>
                 <h3>{item.title}</h3>
               </div>;
             })}
           </div> :
-          <h2>Add some Expenses</h2>
+          <h2>Add some Categories</h2>
         }
       </main>
     );
@@ -38,15 +38,15 @@ class DashBoardContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    expenses: state,
+    categories: state,
   };
 };
 
 const mapDispatchToProps = (dispatch, getState) => {
   return {
-    expenseCreate: expense => dispatch(expenseCreate(expense)),
-    expenseUpdate: expense => dispatch(expenseUpdate(expense)),
-    expenseDelete: expense => dispatch(expenseDelete(expense)),
+    categoryCreate: category => dispatch(categoryCreate(category)),
+    categoryUpdate: category => dispatch(categoryUpdate(category)),
+    categoryDelete: category => dispatch(categoryDelete(category)),
   };
 };
 

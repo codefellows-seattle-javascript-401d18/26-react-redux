@@ -4,7 +4,7 @@ export const categoryCreate = category => {
   category.id = uuid();
   category.timestamp = new Date();
   // category.name = '';
-  category.budget = 0;
+  // category.budget = 0;
   return {
     type: 'CATEGORY_CREATE',
     payload: category,

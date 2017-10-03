@@ -10,7 +10,7 @@ import ExpenseForm from '../expense-form';
 class DashBoardContainer extends React.Component {
   componentDidMount() {
     console.log('__DASHBOARD__'. this);
-    this.props.expenseCreate({title: "use me maybe?"});
+    this.props.expenseCreate({title: 'use me maybe?'});
   }
 
   render() {
@@ -18,13 +18,18 @@ class DashBoardContainer extends React.Component {
       <main className="main-content">
         <h2>Expense DashBoard</h2>
         <ExpenseForm
-        buttontext="create expense"
-        onComplete={this.props.expenseCreate}/>
+          buttontext="create expense"
+          onComplete={this.props.expenseCreate}/>
 
         {this.props.expenses.length ?
-          return <div key{item.id}>
-            <h3>{item.title}</h3>
-          </div>;
+          <div>
+            {this.props.expenses.map(item => {
+              return <div key={item.id}>
+                <h3>{item.title}</h3>
+              </div>;
+            })}
+          </div> :
+          <h2>Add some Expenses</h2>
         }
       </main>
     );

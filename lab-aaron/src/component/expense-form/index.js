@@ -26,7 +26,7 @@ class ExpenseForm extends React.Component {
       <form className="expense-form" onSubmit={this.handleSubmit}>
         <input
           type="text"
-          name="title"
+          name="name"
           placeholder="Enter Your Expense!"
           value:{this.state.title}
           onChange={this.handleChange}/>

@@ -6,10 +6,16 @@ class categoryForm extends React.Component {
     super(props);
     this.state = {
       title: props.category ? props.category.title : '',
+      id: props.category ? props.category.id : null,
+      timestamp: props.category ? props.category.timestamp : null,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    console.log('__FORM_PROPS__', this.props);
   }
 
   handleChange(e) {
@@ -19,15 +25,17 @@ class categoryForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.onComplete(Object.assign({}, this.state));
+    this.setState({title: 'change name'});
   }
 
   render() {
     return (
       <form className="category-form" onSubmit={this.handleSubmit}>
         <input
+          required
           type="text"
           name="name"
-          placeholder="Enter Your Category!"
+          placeholder="Enter an Expense Category"
           value={this.state.title }
           onChange={this.handleChange}/>
 

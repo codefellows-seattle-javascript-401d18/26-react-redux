@@ -1,29 +1,34 @@
-import React from 'react'
+import React from 'react';
+import uuid from 'uuid/v4';
 
 
 class CategoryForm extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
+      id: uuid(),
       title: props.category ? props.category.title : '',
-    }
+      expense: props.category ? props.category.expense : '',
+    };
 
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
-    this.setState({ title: e.target.value })
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   }
 
   handleSubmit(e) {
-    e.preventDefault()
-    this.props.onComplete(Object.assign({}, this.state))
+    e.preventDefault();
+    this.props.onComplete(Object.assign({}, this.state));
   }
 
   render() {
     return (
-      <form className="category-form" onSubmit={this.handleSubmit}>
+      <form className="expense-form" onSubmit={this.handleSubmit}>
         <input
           type="text"
           name="title"
@@ -31,10 +36,18 @@ class CategoryForm extends React.Component {
           value={this.state.title}
           onChange={this.handleChange}/>
 
-          <button type="submit">{this.props.buttonText}</button>
+        <input
+          type="number"
+          name="expense"
+          placeholder="expense"
+          value={this.state.expense}
+          onChange={this.handleChange} />
+
+
+        <button type="submit">{this.props.buttonText}</button>
       </form>
-    )
+    );
   }
 }
 
-export default CategoryForm
+export default CategoryForm;

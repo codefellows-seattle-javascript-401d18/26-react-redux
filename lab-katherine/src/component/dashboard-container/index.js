@@ -1,18 +1,18 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React from 'react';
+import {connect} from 'react-redux';
 import {
   categoryCreate,
   categoryUpdate,
   categoryDelete,
-} from '../../action/category-actions'
-import CategoryForm from '../category-form'
+} from '../../action/category-actions';
+import CategoryForm from '../category-form';
 
 class DashboardContainer extends React.Component {
   componentDidMount() {
-    console.log('__DASHBOARD__', this)
-    this.props.categoryCreate({title: 'Star Wars'})
-    this.props.categoryCreate({title: 'Dune'})
-    this.props.categoryCreate({title: 'Star Trek'})
+    console.log('__DASHBOARD__', this);
+    this.props.categoryCreate({title: 'a soft bed', expense: 400});
+    this.props.categoryCreate({title: 'a bottle of wine', expense: 50});
+    this.props.categoryCreate({title: 'finishing this assignment', expense: 100000});
   }
 
   render() {
@@ -28,29 +28,29 @@ class DashboardContainer extends React.Component {
           <div>
             {this.props.categories.map(item => {
               return <div key={item.id}>
-                <h3>{item.title}</h3>
+                <h3>{item.title}: {item.expense}</h3>
               </div>
             })}
           </div> :
           <h2>Add some categories</h2>
         }
       </main>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    categories: state
-  }
-}
+    categories: state,
+  };
+};
 
 const mapDispatchToProps = (dispatch, getState) => {
   return {
     categoryCreate: category => dispatch(categoryCreate(category)),
     categoryUpdate: category => dispatch(categoryUpdate(category)),
     categoryDelete: category => dispatch(categoryDelete(category)),
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);

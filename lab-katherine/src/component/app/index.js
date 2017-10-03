@@ -1,27 +1,27 @@
-import React from 'react'
-import {BrowserRouter, Route} from 'react-router-dom'
-import DashboardContainer from '../dashboard-container'
-import {Provider} from 'react-redux'
-import createAppStore from '../../lib/store'
+import React from 'react';
+import {BrowserRouter, Route} from 'react-router-dom';
+import DashboardContainer from '../dashboard-container';
+import {Provider} from 'react-redux';
+import createAppStore from '../../lib/store';
 
-const store = createAppStore()
+const store = createAppStore();
 
 class App extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   componentDidMount() {
     store.subscribe(() => {
-      console.log('__STATE__', store.getState())
-    })
+      console.log('__STATE__', store.getState());
+    });
 
-    store.dispatch({ type: null })
+    store.dispatch({ type: null });
   }
 
   render() {
     return (
-      <section className="kanban-board">
+      <section className="expense-tracker">
         <Provider store={store}>
           <BrowserRouter>
             <section>
@@ -30,8 +30,8 @@ class App extends React.Component {
           </BrowserRouter>
         </Provider>
       </section>
-    )
+    );
   }
 }
 
-export default App
+export default App;

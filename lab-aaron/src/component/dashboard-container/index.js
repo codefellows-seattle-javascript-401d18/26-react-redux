@@ -18,7 +18,7 @@ class DashBoardContainer extends React.Component {
       <main className="main-content">
         <h2>Expense DashBoard</h2>
         <ExpenseForm
-          buttontext="create expense"
+          buttontext="create"
           onComplete={this.props.expenseCreate}/>
 
         {this.props.expenses.length ?

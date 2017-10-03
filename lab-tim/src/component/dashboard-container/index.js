@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import CategoryForm from '../category-form';
+import CategoryItem from '../category-item';
 import {
   categoryCreate,
   categoryUpdate,
@@ -24,22 +25,13 @@ class DashboardContainer extends React.Component {
           buttonText="create expense"
           onComplete={this.props.categoryCreate}/>
 
-        {this.props.categories.length ?
-          <div>
-            {this.props.categories.map(item => {
-              return <div key={item.id}>
-                <h3>{item.title}</h3>
-              </div>;
-            })}
-          </div> :
-          <h2>Add some expense categories</h2>
-        }
+        <CategoryItem />
       </main>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     categories: state,
   };
@@ -47,9 +39,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, getState) => {
   return {
-    categoryCreate: category => dispatch(categoryCreate(category)),
-    categoryUpdate: category => dispatch(categoryUpdate(category)),
-    categoryDelete: category => dispatch(categoryDelete(category)),
+    categoryCreate: (category) => dispatch(categoryCreate(category)),
+    categoryUpdate: (category) => dispatch(categoryUpdate(category)),
+    categoryDelete: (category) => dispatch(categoryDelete(category)),
   };
 };
 

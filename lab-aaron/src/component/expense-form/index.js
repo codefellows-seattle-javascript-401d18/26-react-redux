@@ -5,7 +5,7 @@ class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: props.category ? props.category.title : '',
+      title: props.expense ? props.expense.title : '',
     };
 
     this.handleChange = this.handleChange.bind(this);

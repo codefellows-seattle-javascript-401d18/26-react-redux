@@ -50,10 +50,37 @@ module.exports = {
         use: [
           {
             loader: 'url-loader',
-            limit: 10000,
-            name: 'font/[name].[ext]',
-          }
-        ]
+            options: {
+              limit: 10000,
+              name: 'font/[name].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(jpg|jpeg|gif|png|tiff|svg)$/,
+        exclude: /glyph\.svg/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 60000,
+              name: 'image/[name].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(mp3|aac|aiff|wav|flac|m4a|mp4|ogg)$/,
+        exclude: /glyph\.svg/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'audio/[name].[ext]',
+            },
+          },
+        ],
       },
     ],
   },

@@ -8,7 +8,7 @@
     "watch": "webpack-dev-server --inline --hot"
   },
   "keywords": [],
-  "author": "",
+  "author": "Said",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.0",

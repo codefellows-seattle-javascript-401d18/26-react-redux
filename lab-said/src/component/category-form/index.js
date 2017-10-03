@@ -25,25 +25,25 @@ class CategoryForm extends React.Component {
     return (
       <form className="category-form" onSubmit={this.handleSubmit}>
 
-      <h3>{this.props.buttonText} expense category</h3>
+      <h3>{this.props.buttonText} an expense category</h3>
 
       <input
       type="text"
       name="title"
       placeholder="enter a title"
       value={this.state.title}
-      onChange={this.handleChange}/>
+      onChange={this.handleChange} required/>
 
       <input
           name='budget'
           type='number'
           placeholder='cost'
           value={this.state.budget}
-          onChange={this.handleChange}
-        />
+          onChange={this.handleChange} required/>
 
       <button type="submit">{this.props.buttonText}</button>
       </form>
+
     );
   }
 }

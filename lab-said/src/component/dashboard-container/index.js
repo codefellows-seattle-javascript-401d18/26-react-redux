@@ -7,6 +7,8 @@ import {
 } from '../../action/category-actions';
 import CategoryForm from '../category-form';
 
+import CategoryItem from '../category-item';
+
 class DashboardContainer extends React.Component {
   componentDidMount() {
     console.log('__DASHBOARD__', this);
@@ -17,20 +19,30 @@ class DashboardContainer extends React.Component {
       <main className="main-content">
         <h2>Dashboard</h2>
 
+        <h2>Monthly Budget: {this.props.totalMonthly}</h2>
+        <h2>
+        Total Spent: </h2>
+        <h2>Total remaining: {this.props.totalMonthly}</h2>
+
         <CategoryForm
-          buttonText="create"
+          buttonText='Create'
           onComplete={this.props.categoryCreate}/>
 
-        {this.props.categories.length ?
-          <div>
-            {this.props.categories.map(item => {
-              return <div key={item.id}>
-                <h3>Item name: {item.title}.  <span> Item cost : ${item.budget}. </span></h3></div>;
-
-            })}
-          </div> :
+          <ul className="categoryList">
+          {this.props.categories.map((item) => {
+            return (
+              <CategoryItem
+                key={item.id}
+                category={item}
+                categoryDelete={this.props.categoryDelete}
+                categoryUpdate={this.props.categoryUpdate}
+              />
+            );
+          }
+          )}
+        </ul>
           <h2>Add some categories</h2>
-        }
+
       </main>
     );
   }

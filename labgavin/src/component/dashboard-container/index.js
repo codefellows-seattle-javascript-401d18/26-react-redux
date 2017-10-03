@@ -10,18 +10,27 @@ import CategoryForm from '../category-form';
 import CategoryItem from '../category-item';
 
 class DashboardContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      totalSpent: this.props.categories.reduce((a, b) => a + parseInt(b.budget), 0),
+      test: 0,
+    };
+  }
   componentDidMount() {
     console.log('__DASHBOARD__', this);
+    console.log(this.state.totalSpent, 'totalSpent');
     this.props.categoryCreate({title: 'Dining Out', budget: '500'});
-
   }
+
+
 
   render() {
     return (
       <main className="dashboard-container">
         <h1>Dashboard</h1>
         <h2>Total Monthly Budget: {this.props.totalMonthly}</h2>
-        <h2>Total remaining: {this.props.totalMonthly}</h2>
+        <h2>Total remaining: {this.props.totalRemaining}</h2>
 
         <CategoryForm
           buttonText='Create'
@@ -46,9 +55,13 @@ class DashboardContainer extends React.Component {
   }
 }
 
+
+
 const mapStateToProps = state => {
   return {
     categories: state,
+    totalMonthly: 2000,
+    // totalRemaining: 2000 - this.state.totalSpent,
   };
 };
 

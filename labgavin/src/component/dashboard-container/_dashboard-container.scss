@@ -10,22 +10,10 @@ $border-radius: 3px;
 body {
   background: $secondary;
   font-family: $font-primary;
+  text-align: center;
 
   .application {
     width: 100%;
-  }
-
-  pre {
-    background: $black;
-    color: $white;
-    padding: $gutter-lg;
-    border-radius: $border-radius;
-
-    code {
-      max-width: 50%;
-      margin: $gutter-sm auto;
-      font-size: 2.5vw;
-    }
   }
 }
 
@@ -35,7 +23,7 @@ select {
 }
 
 button, select, option {
-  width: 100%;
+  width: 25%;
   padding: $gutter-sm;
   margin: ($gutter-sm / 2) 0;
   font-size: 2vw;

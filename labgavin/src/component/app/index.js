@@ -19,6 +19,7 @@ class App extends React.Component {
     store.dispatch({ type: null });
   }
 
+
   render() {
     return (
       <section className="budget">

@@ -16,7 +16,10 @@ class CategoryForm extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({[e.target.name]: e.target.value});
+    this.setState(
+      {
+        [e.target.name]: e.target.value,
+      });
   }
 
   handleSubmit(e) {
@@ -33,7 +36,7 @@ class CategoryForm extends React.Component {
           name="title"
           placeholder="enter a title"
           value={this.state.title}
-          onChange={this.handleChange}/>
+          onChange={this.handleChange}/><br/>
 
         <input
           name='budget'
@@ -42,6 +45,7 @@ class CategoryForm extends React.Component {
           value={this.state.budget}
           onChange={this.handleChange}
         />
+        <br/>
 
         <button type="submit">{this.props.buttonText}</button>
       </form>

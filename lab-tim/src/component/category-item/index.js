@@ -1,29 +1,22 @@
 import React from 'react';
+import CategoryForm from '../category-form';
 
 class CategoryItem  extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-    console.log('__ITEM_STATE__', this.state);
-    console.log('__ITEM_PROPS__', this.props);
-  }
-
   render() {
     return (
-      <div className="category-item">
-        {this.props.categories.length ?
-          <div>
-            {this.props.categories.map((item) => {
-              return <div key={item.id}>
-                <h3>{item.title}</h3>
-              </div>;
-            })}
-          </div> :
-          <h2>Add some expense categories</h2>
-        }
-      </div>
+      <li>
+        <h2>{this.props.category.title}</h2>
+        <CategoryForm
+          buttonText='Update'
+          category={this.props.category}
+          onComplete={this.props.categoryUpdate}
+        />
+        <button className='delete-button' onClick={()=>this.props.categoryDelete(this.props.category)}>X</button>
+      </li>
     );
   }
 }

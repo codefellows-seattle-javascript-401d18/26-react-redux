@@ -19,13 +19,24 @@ class DashboardContainer extends React.Component {
   render() {
     return (
       <main className="main-content">
-        <h2>Dashboard</h2>
 
+         <h2>Dashboard</h2>
         <CategoryForm
-          buttonText="create expense"
-          onComplete={this.props.categoryCreate}/>
-
-        <CategoryItem />
+          buttonText='create expense'
+          onComplete={this.props.categoryCreate} />
+        <ul className="category-list">
+          {this.props.categories.map((item) => {
+            return (
+              <CategoryItem
+                key={item.id}
+                category={item}
+                categoryDelete={this.props.categoryDelete}
+                categoryUpdate={this.props.categoryUpdate}
+              />
+            );
+          }
+          )}
+        </ul>
       </main>
     );
   }

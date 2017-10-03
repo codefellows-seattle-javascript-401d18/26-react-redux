@@ -1,5 +1,39 @@
+import React from 'react';
+import uuid from 'uuid/v4';
 
+class CategoryItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      id: uuid,
+      budget: 100,
+      //do they need a category?//
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.onComplete(Object.assign({}, this.state));
+  }
+
+  handleClick(e){
+    e.preventDefault();
+//SOMETHING
+  }
+
+  render() {
+    return (
+      <form className ="category-form" onSubmit = {this.handleSubmit} onClick = {this.handleClick}>
+      <button type = "submit"> {this.props.buttonText}</button>
+      </form>
+    );
+  }
+}
+
+export default CategoryItem;
 
 // CategoryItem Component
 //

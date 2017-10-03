@@ -1,8 +1,18 @@
+![cf](https://i.imgur.com/7v5ASc8.png) 26: React & Redux
+======
 #### Documentation
+This is Expenses tracker app.
+We are using the following tools:
+React- a javaScript library for building user interfaces
+Redux- used for handling the state within an app
+Babelrc- a compiler for using ES6
+webpack- used to bundle our assets
 
-By using...
-Babelrc (a compiler for using ES6)
-webpack (used to bundle our assets)
+To confirm things are working in chrome, type this in terminal:
+```
+npm run watch
+```
+
 
 ## Learning Objectives
 * We will be able to use redux with react
@@ -92,3 +102,6 @@ Provider
   * `onClick` the category should be removed from the application state
 * should display a `CategoryForm`
   * `onComplete` the form should update the component in the application state
+
+#### Collaborators
+Maddie, Michelle.

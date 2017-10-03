@@ -1,7 +1,4 @@
-import {createStore} from 'redux'
+import {createStore} from 'redux';
+import reducer from '../reducer/category.js';
 
-import categoryReducer from './reducer/main.js'
-
-const store = createStore{
-
-}
+export default () => createStore(reducer);

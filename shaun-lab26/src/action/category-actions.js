@@ -11,16 +11,12 @@ export const categoryCreate = category => {
   };
 };
 
-export const categoryUpdate = category => {
-  return {
-    type: 'CATEGORY_UPDATE',
-    payload: category,
-  };
-};
+export const categoryUpdate = (category) => ({
+  type: 'CATEGORY_UPDATE',
+  payload: category,
+});
 
-export const categoryDelete = category => {
-  return {
-    type: 'CATEGORY_DELETE',
-    payload: category,
-  };
-};
+export const categoryDelete = (category) => ({
+  type: 'CATEGORY_DELETE',
+  payload: category,
+});

@@ -5,13 +5,18 @@ class CategoryForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      budget: 0,
-      // id: uuid(),
-      // timestamp: new Date(),
+      title: props.category ? props.category.title : '',
+      budget: props.category ? props.category.budget : '',
+      id: props.category ? props.category.id :null,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillReceiveProps(props) {
+    if (props.category) {
+      this.setState(props.category);
+    }
   }
 
   handleChange(e) {
@@ -20,11 +25,11 @@ class CategoryForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onComplete(Object.assign({}, this.state));
-    this.setState({
-      title: '',
-      budget: 0,
-    });
+    this.props.onComplete({...this.state});
+
+    if (!this.props.category) {
+      this.setState({ title: '' });
+    }
   }
 
   render() {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-class categoryForm extends React.Component {
+class CategoryForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,4 +45,4 @@ class categoryForm extends React.Component {
   }
 }
 
-export default categoryForm;
+export default CategoryForm;

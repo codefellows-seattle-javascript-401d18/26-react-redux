@@ -5,31 +5,33 @@ import {
   categoryUpdate,
   categoryDelete,
 } from '../../action/category-actions';
-import categoryForm from '../category-form';
+import CategoryForm from '../category-form';
 
 class DashBoardContainer extends React.Component {
   componentDidMount() {
     console.log('__DASHBOARD__'. this);
-    this.props.categoryCreate({title: 'use me maybe?'});
+    this.props.categoryCreate({title: 'Automatic Payments'});
+    this.props.categoryCreate({title: 'Debit Card Purchases'});
+    this.props.categoryCreate({title: 'Mortgage/Rent'});
   }
 
   render() {
     return (
       <main className="main-content">
         <h2>Category DashBoard</h2>
-        <categoryForm
+        <CategoryForm
           buttontext="create"
           onComplete={this.props.categoryCreate}/>
 
         {this.props.categories.length ?
           <div>
             {this.props.categories.map(item => {
-              return <div key={item.id}>
-                <h3>{item.title}</h3>
-              </div>;
+              return <CategoryItem
+                key={item.id}
+                category={item}/>;
             })}
           </div> :
-          <h2>Add some Categories</h2>
+          <h2>Add some Expense Categories</h2>
         }
       </main>
     );
@@ -45,8 +47,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, getState) => {
   return {
     categoryCreate: category => dispatch(categoryCreate(category)),
-    categoryUpdate: category => dispatch(categoryUpdate(category)),
-    categoryDelete: category => dispatch(categoryDelete(category)),
   };
 };
 

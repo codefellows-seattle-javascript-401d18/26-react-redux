@@ -1,3 +1,4 @@
+import './_dashboard-container.scss';
 import React from 'react';
 import {connect} from 'react-redux';
 import {
@@ -19,7 +20,9 @@ class DashboardContainer extends React.Component {
     console.log(this.props);
     return (
       <main className="main-content">
-        <h2>Dashboard</h2>
+        <header className="main-header">
+          <h2>Dashboard</h2>
+        </header>
 
         <CategoryForm
           buttonText="create"
@@ -28,9 +31,9 @@ class DashboardContainer extends React.Component {
         {this.props.categories.length ?
           <div>
             {this.props.categories.map(item => {
-              return <div key={item.id}>
-                <h3>{item.title}</h3>
-              </div>;
+              return <CategoryItem
+                        key={item.id}
+                        category={item}/>;
             })}
           </div> :
           <h2>Add some categories</h2>

@@ -10,7 +10,7 @@ import CategoryItem from '../category-item';
 class DashboardContainer extends React.Component {
   componentDidMount() {
     console.log('__DASHBOARD__', this);
-    this.props.categoryCreate({name: 'Fake Expense Category'});
+    // this.props.categoryCreate({name: 'Fake Expense Category'});
   }
 
   render() {

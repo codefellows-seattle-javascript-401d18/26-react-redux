@@ -4,9 +4,9 @@
   "description": "Lab Redux1",
   "main": "webpack.config.js",
   "scripts": {
-     "build": "webpack",
-     "watch": "webpack-dev-server --inline --hot"
-   },
+    "build": "webpack",
+    "watch": "webpack-dev-server --inline --hot"
+  },
   "author": "Michelle",
   "license": "MIT",
   "devDependencies": {

@@ -20,7 +20,28 @@ export const categoryUpdate = category => {
 
 export const categoryDestroy = category => {
   return {
-    type: 'CATEGORY_DESTORY',
+    type: 'CATEGORY_DESTROY',
     payload: category,
+  };
+};
+
+export const expenseCreate = expense => {
+  return {
+    type: 'EXPENSE_CREATE',
+    payload: expense,
+  };
+};
+
+export const expenseUpdate = expense => {
+  return {
+    type: 'EXPENSE_UPDATE',
+    payload: expense,
+  };
+};
+
+export const expenseDelete = expense => {
+  return {
+    type: 'EXPENSE_DELETE',
+    payload: expense,
   };
 };

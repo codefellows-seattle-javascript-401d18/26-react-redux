@@ -10,6 +10,12 @@ export default (state = initialState, action) => {
     return state.map(category => category.id === payload.id ? payload : category);
   case 'CATEGORY_DESTROY':
     return state.filter(category => category.id !== payload.id);
+  case 'EXPENSE_CREATE':
+    return [...state, payload];
+  case 'EXPENSE_UPDATE':
+    return state.map(expense => expense.id === payload.id ? payload : expense);
+  case 'EXPENSE_DELETE':
+    return 
   default:
     return state;
   }

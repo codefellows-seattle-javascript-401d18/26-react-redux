@@ -1,4 +1,4 @@
-let initialState = [];
+let initialState = {};
 
 export default (state = initialState, action) => {
   let {payload, type} = action;
@@ -8,8 +8,7 @@ export default (state = initialState, action) => {
     return [...state, payload];
   case 'CATEGORY_UPDATE':
     return state.map(category => category.id === payload.id ? payload : category);
-    //possibly change destroy to be more accurate? 
-  case 'CATEGORY_DESTORY':
+  case 'CATEGORY_DESTROY':
     return state.filter(category => category.id !== payload.id);
   default:
     return state;

@@ -22,13 +22,13 @@ class App extends React.Component {
     return (
       <section className="expense-tracker">
         <Provider store = {store}>
-        <BrowserRouter>
-        <section>
-          <Route exact path="/" component={DashboardContainer}/>
-          </section>
+          <BrowserRouter>
+            <section>
+              <Route exact path="/" component={DashboardContainer}/>
+            </section>
           </BrowserRouter>
-          </Provider>
-          </section>
+        </Provider>
+      </section>
     );
   }
 }

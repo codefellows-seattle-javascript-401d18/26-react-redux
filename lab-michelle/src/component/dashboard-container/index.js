@@ -2,8 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {
   categoryCreate,
-  categoryUpdate,
-  categoryDestroy,
 } from '../../action/category-actions';
 import CategoryForm from '../category-form';
 import CategoryItem from '../category-item';
@@ -12,7 +10,7 @@ import CategoryItem from '../category-item';
 class DashboardContainer extends React.Component {
   componentDidMount() {
     console.log('__DASHBOARD__', this);
-    this.props.categoryCreate({name: 'Fake Category'});
+    this.props.categoryCreate({name: 'Fake Expense Category'});
   }
 
   render() {
@@ -25,36 +23,32 @@ class DashboardContainer extends React.Component {
           onComplete = {this.props.categoryCreate}/>
 
           {this.props.categories.length ?
-          <div>
-            {this.props.categories.map(item => { return <div key={item.id}>
-              <h3>{item.name}</h3>
-            </div>
-            })} </div>
-            :
+            <div>
+              {this.props.categories.map(item => {return <CategoryItem
+                key={item.id}
+                category = {item}/>;
+              })}
+            </div> :
             <h2>Add some categories</h2>
         }
       </main>
-    )
-  }
-
-
-//wtf...
-  const mapStateToProps = state => {
-    return {
-      categories: state,
-    }
-  }
-
-  const mapDispatchToProps = (dispatch, getState) => {
-    return {
-      categoryCreate: category => dispatch(categoryCreate(category)),
-      categoryUpdate: category => dispatch(categoryUpdate(category)),
-      categoryDestroy: category => dispatch(categoryDestroy(category)),
-    }
+    );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer)
+const mapStateToProps = state => {
+  return {
+    categories: state,
+  };
+};
+
+const mapDispatchToProps = (dispatch, getState) => {
+  return {
+    categoryCreate: category => dispatch(categoryCreate(category)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);
 
 // Dashboard Component
 //

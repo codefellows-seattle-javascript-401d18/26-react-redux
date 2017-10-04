@@ -1,35 +1,42 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import CategoryForm from '../category-form';
-import uuid from 'uuid/v4';
+// import uuid from 'uuid/v4';
+import {categoryUpdate, categoryDelete} from '../../action/category-actions';
 
 class CategoryItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: '',
-      id: uuid,
-      budget: 100,
-      //do they need a category?//
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e){
-    e.preventDefault();
-    this.props.categoryDestroy(e.target.value = e.target.name)
-  }
+    }
 
   render() {
     return (
-      <button onClick={this.handleClick}>delete</button>
-      <CategoryForm />
-
+      <div className = "category-item">
+      <button onClick={() => this.props.categoryDelete(this.props.catgory)}>X</button>
+      <h3>{this.props.category.title}</h3>
+      <CategoryForm
+        buttonText="update"
+        onComplete = {this.props.categoryUpdate}
+        category = {this.props.category}/>
+      </div>
     );
   }
 }
 
-export default CategoryItem;
+let mapStateToProps = state => {
+  return {
+    categories: state,
+  };
+};
+
+let mapDispatchToProps = (dispatch, getState) => {
+  return {
+    categoryUpdate: category => dispatch(categoryUpdate(category)),
+    categoryDelete: category => dispatch(categoryDelete(category)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(CategoryItem);
 
 // CategoryItem Component
 //

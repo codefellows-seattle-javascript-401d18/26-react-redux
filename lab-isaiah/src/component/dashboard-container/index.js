@@ -32,7 +32,7 @@ class DashboardContainer extends React.Component {
     return (
       <main className="main-content">
         <header className="main-header">
-          <h2>Dashboard</h2>
+          <h2>Smash Dashboard</h2>
         </header>
 
         <CategoryForm
@@ -47,11 +47,11 @@ class DashboardContainer extends React.Component {
                           key={item.id}
                           category={item}/>;
               })}
-            
+
             </div> :
 
 
-              <h2>Add some categories</h2>
+              <h3>Add some categories</h3>
 
         }
       </main>

@@ -41,14 +41,15 @@ class CategoryItem extends React.Component {
 
           {this.state.expenses ?
             <div>
+            <button className="delete-button" onClick={() => this.props.expenseDelete(this.props.expense)}>x</button>
             <ExpenseForm
               buttonText1="update"
               onComplete={this.props.expenseUpdate}
-              category={this.props.expense}/>
+              expense={this.props.expense}/>
 
               </div> :
 
-                <h2>Add some expenses</h2>
+                <h3>Add some expenses</h3>
 
           }
 

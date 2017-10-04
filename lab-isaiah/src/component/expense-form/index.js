@@ -12,19 +12,24 @@ class ExpenseForm extends React.Component {
       price: props.expense ? props.expense.price : '',
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleExpenseTitleChange = this.handleExpenseTitleChange.bind(this);
+    this.handleExpensePriceChange = this.handleExpensePriceChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(e) {
+  handleExpenseTitleChange(e) {
     this.setState({ title: e.target.value });
+  }
+
+  handleExpensePriceChange(e) {
+    this.setState({ price: e.target.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     console.log('isaiah was here', this);
     this.props.onComplete(Object.assign({}, this.state));
-    this.setState({title: ''});
+    this.setState({title: '', price: 0});
   }
 
   render() {
@@ -38,7 +43,7 @@ class ExpenseForm extends React.Component {
           placeholder="enter expense"
           required
           value={this.state.title}
-          onChange={this.handleChange}/>
+          onChange={this.handleExpenseTitleChange}/>
 
         <input
           className="expForm"
@@ -47,7 +52,7 @@ class ExpenseForm extends React.Component {
           placeholder="enter a price"
           required
           value={this.state.price}
-          onChange={this.handleChange}/>
+          onChange={this.handleExpensePriceChange}/>
 
         <button type="submit">{this.props.buttonText1}</button>
       </form>

@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import ExpenseForm from '../expense-form';
 import {expenseUpdate, expenseDelete, expenseCreate} from '../../action/expense-actions.js';
 
+
+//host my expense items
 class ExpenseItem extends React.Component {
   render() {
     let {expenseUpdate, expenseDelete, expense, category} = this.props;

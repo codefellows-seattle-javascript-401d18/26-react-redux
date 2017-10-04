@@ -5,6 +5,8 @@ export const categoryCreate = category => {
   category.timestamp = new Date();
   // category.name = '';
   // category.budget = 0;
+
+  //creating the three different actions for category
   return {
     type: 'CATEGORY_CREATE',
     payload: category,

@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import {categoryUpdate, categoryDelete} from '../../action/category-actions.js';
 import {expenseUpdate, expenseDelete, expenseCreate} from '../../action/expense-actions.js';
 
-
+//hosts my items obce thet are creating, including the create and delete button
 class CategoryItem extends React.Component {
 
 

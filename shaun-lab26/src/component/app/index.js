@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
   }
-
+//creatting my entire app with a console log
   componentDidMount() {
     store.subscribe(() => {
       console.log('__STATE__', store.getState());

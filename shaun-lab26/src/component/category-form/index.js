@@ -1,6 +1,8 @@
 import React from 'react';
 import uuid from 'uuid/v4';
 
+
+//hosts my formated category form with handle functions
 class CategoryForm extends React.Component {
   constructor(props) {
     super(props);

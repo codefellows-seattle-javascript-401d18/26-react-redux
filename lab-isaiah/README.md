@@ -5,7 +5,7 @@
 
 ### Completed Following Featured Tasks:
 
-<!-- Need to add featured tasks section -->
+Work in progress
 
 ### Documentation:
 This lab to provide a better understanding of how react and redux operate together.

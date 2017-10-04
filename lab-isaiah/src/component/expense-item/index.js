@@ -9,6 +9,7 @@ class ExpenseItem extends React.Component {
     super(props);
     this.state = {
       title: props.expense ? props.expense.title : '',
+      price: props.expense ? props.expense.price : null,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,14 +26,16 @@ class ExpenseItem extends React.Component {
   }
 
   render() {
+    console.log(this);
     return (
       <div className="expense-item">
-        <button id="delete-button" onClick={() => this.props.expenseDelete(this.props.expense)}>x</button>
-        <h3>{this.props.expense.title}</h3>
-        <ExpenseForm
-          buttonText="update"
-          onComplete={this.props.expenseUpdate}
-          expense={this.props.expense}/>
+      <button className="delete-button" onClick={() => this.props.expenseDelete(this.props.expense)}>x</button>
+      <h4>Expenses</h4>
+      <ExpenseForm
+        buttonText1="update"
+        onComplete={this.props.expenseUpdate}
+        expense={this.props.expense}
+        />
       </div>
     );
   }

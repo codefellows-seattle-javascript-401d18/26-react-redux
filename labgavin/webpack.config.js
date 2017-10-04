@@ -19,7 +19,7 @@ const plugins = [
 ];
 
 if(production) {
-  plugins = plugins.concat([new CleanPlugin(), new UglifyPlugin()]);
+  plugins = plugins.concat([new CleanPlugin(), new UglifyPlugin()])
 }
 
 module.exports = {
@@ -79,7 +79,7 @@ module.exports = {
             options: {
               name: 'audio/[name].[ext]',
             },
-          },
+          }   ,
         ],
       },
     ],

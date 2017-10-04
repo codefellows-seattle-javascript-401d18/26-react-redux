@@ -1,13 +1,3 @@
-// this will be the new state
-// let newInitialState = {
-//   categories: ['rent', 'auto', 'food'],
-//   expenses: {
-//     rent: [{id, cid, title}],
-//     auto: [{id, cid, title}],
-//     food: [{id, cid, title}],
-//   },
-// };
-
 let initialState = {};
 
 export default (state=initialState, action) => {
@@ -18,7 +8,7 @@ export default (state=initialState, action) => {
     return {...state, [payload.id]: []};
 
   case 'CATEGORY_DELETE':
-    return {...state, [payload.id]: undefined};
+    return {...state, [payload.id]: null};
 
   case 'EXPENSE_CREATE': {
     // line below is same thing as
@@ -28,11 +18,18 @@ export default (state=initialState, action) => {
     return {...state, [categoryId]: [...categoryExpenses, payload]};
   }
 
-  case 'EXPENSE_UPDATE':
-    return state;
+  case 'EXPENSE_UPDATE': {
+    let updateState = state;
+    let {categoryId} = payload;
+    updateState[categoryId] = updateState[categoryId].map((expense) => {
+      if (expense.id === payload.id) expense = payload;
+      return expense;
+    });
+    return {...updateState};
+  }
 
   case 'EXPENSE_DELETE':
-    return state;
+    return;
 
   default:
     return state;

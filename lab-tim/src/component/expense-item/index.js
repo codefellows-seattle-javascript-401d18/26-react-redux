@@ -7,10 +7,6 @@ import {
 import CategoryForm from '../category-form';
 
 class ExpenseItem  extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   render() {
     return (
       <div className="expense-item">

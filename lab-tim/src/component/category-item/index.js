@@ -10,12 +10,9 @@ import {
   expenseDelete as expenseActionDelete,
 } from '../../action/expense-actions';
 import CategoryForm from '../category-form';
+import ExpenseForm from '../expense-form';
 
 class CategoryItem  extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   render() {
     return (
       <div className="category-item">
@@ -27,8 +24,8 @@ class CategoryItem  extends React.Component {
         />
         <button onClick={()=>this.props.categoryDelete(this.props.category)}>X</button>
         <ExpenseForm
-          category={this.props.categoryId}
-          onComplete={this.props.expenseUpdate}
+          categoryId={this.props.categoryId}
+          onComplete={this.props.expenseCreate}
         // List of expense items {expense}
         />
       </div>
@@ -36,11 +33,7 @@ class CategoryItem  extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     categories: state,
-//   };
-// };
+const mapStateToProps = () => {};
 
 const mapDispatchToProps = (dispatch, getState) => {
   return {
@@ -52,6 +45,6 @@ const mapDispatchToProps = (dispatch, getState) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(CategoryItem);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem);
 
 //export default CategoryItem;

@@ -21,13 +21,13 @@ class ExpenseForm extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({ title: e.target.value });
+    this.setState({ name: e.target.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.onComplete(Object.assign({}, this.state));
-    this.setState({title: ''});   //this line clears out the submit box on submit click
+    this.setState({name: ''});   //this line clears out the submit box on submit click
   }
 
   render() {
@@ -36,9 +36,9 @@ class ExpenseForm extends React.Component {
         <input
           required
           type="text"
-          name="title"
+          name="name"
           placeholder="enter an expense"
-          value={this.state.title}
+          value={this.state.name}
           onChange={this.handleChange}/>
         <button type="submit">{this.props.buttonText}</button>
       </form>

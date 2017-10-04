@@ -9,7 +9,7 @@ const ExtractPlugin = require('extract-text-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
 const UglifyPlugin = require('uglifyjs-webpack-plugin');
 
-const plugins = [
+let plugins = [
   new EnvironmentPlugin(['NODE_ENV']),
   new ExtractPlugin('bundle-[hash].css'),
   new HtmlPlugin({ template: `${__dirname}/src/index.html` }),
@@ -19,7 +19,7 @@ const plugins = [
 ];
 
 if(production) {
-  plugins = plugins.concat([new CleanPlugin(), new UglifyPlugin()])
+  plugins = plugins.concat([new CleanPlugin(), new UglifyPlugin()]);
 }
 
 module.exports = {

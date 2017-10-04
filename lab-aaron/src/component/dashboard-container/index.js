@@ -38,6 +38,7 @@ class DashBoardContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     categories: state,
+    totalMonthly: 2000,
   };
 };
 

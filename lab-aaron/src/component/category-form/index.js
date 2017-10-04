@@ -25,7 +25,7 @@ class CategoryForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.onComplete(Object.assign({}, this.state));
-    this.setState({title: 'change name'});
+    this.setState({title: ''});
   }
 
   render() {

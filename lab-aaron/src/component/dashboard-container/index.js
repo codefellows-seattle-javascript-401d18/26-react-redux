@@ -7,7 +7,7 @@ import CategoryItem from '../category-item';
 class DashBoardContainer extends React.Component {
   componentDidMount() {
     console.log('__DASHBOARD__'. this);
-    this.props.categoryCreate({title: 'Automatic Payments'});
+    // this.props.categoryCreate({title: 'Create a Category'});
     this.props.categoryCreate({title: 'Debit Card Purchases'});
     this.props.categoryCreate({title: 'Mortgage/Rent'});
   }
@@ -15,7 +15,7 @@ class DashBoardContainer extends React.Component {
   render() {
     return (
       <main className="main-content">
-        <h2>Category DashBoard</h2>
+        <h2>Expense Tracker</h2>
         <CategoryForm
           buttontext="create"
           onComplete={this.props.categoryCreate}/>
@@ -38,7 +38,6 @@ class DashBoardContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     categories: state,
-    totalMonthly: 2000,
   };
 };
 

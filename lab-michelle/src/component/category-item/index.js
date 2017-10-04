@@ -2,18 +2,18 @@ import React from 'react';
 import {connect} from 'react-redux';
 import CategoryForm from '../category-form';
 // import uuid from 'uuid/v4';
-import {categoryUpdate, categoryDelete} from '../../action/category-actions';
+import {categoryUpdate, categoryDestroy} from '../../action/category-actions';
 
 class CategoryItem extends React.Component {
   constructor(props) {
     super(props);
-    }
+  }
 
   render() {
     return (
       <div className = "category-item">
-      <button onClick={() => this.props.categoryDelete(this.props.catgory)}>X</button>
       <h3>{this.props.category.title}</h3>
+      <button onClick={() => this.props.categoryDestroy(this.props.category)}>X</button>
       <CategoryForm
         buttonText="update"
         onComplete = {this.props.categoryUpdate}
@@ -32,7 +32,7 @@ let mapStateToProps = state => {
 let mapDispatchToProps = (dispatch, getState) => {
   return {
     categoryUpdate: category => dispatch(categoryUpdate(category)),
-    categoryDelete: category => dispatch(categoryDelete(category)),
+    categoryDestroy: category => dispatch(categoryDestroy(category)),
   };
 };
 

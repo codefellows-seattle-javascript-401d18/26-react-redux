@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
-  categoryCreate,
+  categoryDestroy, categoryCreate, categoryUpdate, 
 } from '../../action/category-actions';
 import CategoryForm from '../category-form';
 import CategoryItem from '../category-item';

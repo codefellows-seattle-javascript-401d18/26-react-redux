@@ -20,7 +20,7 @@ export const categoryUpdate = category => {
 
 export const categoryDestroy = category => {
   return {
-    type: 'CATEGORY_DESTORY',
+    type: 'CATEGORY_DESTROY',
     payload: category,
   };
 };

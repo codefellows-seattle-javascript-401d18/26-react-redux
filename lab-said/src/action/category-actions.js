@@ -5,7 +5,7 @@ export const categoryCreate = (category) => {
   category.timestamp = new Date();
   return {
     type: 'CATEGORY_CREATE',
-    payload: category,
+    payload: {...category, id: uuid(), timestamp: new Date()},
   };
 };
 
@@ -22,5 +22,3 @@ export const categoryDelete = (category) => {
     payload: category,
   };
 };
-
-export const categoryReset = () => ({type: 'CATEGORY_RESET'});

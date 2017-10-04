@@ -19,7 +19,7 @@ class CategoryItem extends React.Component {
           category={this.props.category}
           onComplete={this.props.categoryUpdate}
         />
-        <button className='deleteButton' onClick={()=>this.props.categoryDelete(this.props.category)}>Delet</button>
+        <button className='deleteButton' onClick={()=>this.props.categoryDelete(this.props.category)}>Delete</button>
     </ul>
     );
   }

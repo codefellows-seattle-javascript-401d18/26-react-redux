@@ -1,0 +1,27 @@
+$component-color: #8F317E;
+$main-color: #8F7D8C;
+
+html {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.main-content {
+  background: $main-color;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.main-header {
+  background: $component-color;
+  width: 100%;
+  padding: 1.5em;
+  margin-bottom: 1em;
+}

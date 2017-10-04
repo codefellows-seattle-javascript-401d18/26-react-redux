@@ -1,7 +1,7 @@
 {
-  "name": "26-category-tracker",
+  "name": "27-redux",
   "version": "1.0.0",
-  "description": "category tracker",
+  "description": "",
   "main": "webpack.config.js",
   "scripts": {
     "build": "webpack",
@@ -19,7 +19,6 @@
     "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.7",
     "dotenv": "^4.0.0",
-    "eslint": "^4.5.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",
     "html-webpack-plugin": "^2.30.1",

@@ -1,4 +1,4 @@
-//Need to adjust//
+//Check the refs to expense in here//
 import React from 'react';
 
 class ExpenseForm extends React.Component {
@@ -6,8 +6,8 @@ class ExpenseForm extends React.Component {
     super(props);
     this.state = {
       //state of our expense
-      name: '',
-      price: 0,
+      name: props.expense ? props.expense.name: '',
+      price: props.expense ? props.expense.price: 0,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,27 +24,37 @@ class ExpenseForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onComplete(Object.assign({}, this.state.expense));
+    this.props.onComplete(Object.assign({}, this.state));
     this.setState({price: 0});
     this.setState({name: ''});
   }
 
   render() {
     return (
-      <form className = "category-form" onSubmit= {this.handleSubmit}>
+      <form className = "expense-form" onSubmit= {this.handleSubmit}>
         <input
           required
           type="number"
           price= "0"
-          placeholder = ")"
-          value = {this.state.expense.price}
+          placeholder = "0"
+          value = {this.state.price}
           onChange = {this.handleChange}/>
 
-          <button type="submit">{this.props.buttonText}</button>
+        <input
+          required
+          type="text"
+          name="name"
+          placeholder="enter an expense"
+          value={this.state.price}
+          onChange = {this.handleChange}/>
+
+        <button type="submit">{this.props.buttonText}</button>
         </form>
     );
   }
 }
+
+export default ExpenseForm;
 
 // ExpenseItem Component
 //

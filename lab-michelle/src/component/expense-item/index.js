@@ -3,27 +3,19 @@ import {connect} from 'react-redux';
 import ExpenseForm from '../expense-form';
 import {expenseCreate, expenseUpdate, expenseDelete} from '../../action/category-actions';
 
-
-import React from 'react';
-import {connect} from 'react-redux';
-import ExpenseForm from '../expense-form';
-// import uuid from 'uuid/v4';
-import {categoryUpdate, categoryDelete} from '../../action/category-actions';
-
-class CategoryItem extends React.Component {
+class ExpenseItem extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <div className = "category-item">
-      <button onClick={() => this.props.categoryDelete(this.props.catgory)}>X</button>
-      <h3>{this.props.category.title}</h3>
-      <CategoryForm
-        buttonText="update"
-        onComplete = {this.props.categoryUpdate}
-        category = {this.props.category}/>
+      <div className = "expense-item">
+        <button onClick = {() => this.props.expenseDelete(this.props.expense)}>Delete</button>
+        <h3>{this.props.expense.name}</h3>
+        <ExpenseForm
+          buttonText ="update"
+          onComplete = {this.props.expenseUpdate}/>
       </div>
     );
   }
@@ -31,23 +23,16 @@ class CategoryItem extends React.Component {
 
 let mapStateToProps = state => {
   return {
-    categories: state,
+    expenses: state,
   };
 };
 
 let mapDispatchToProps = (dispatch, getState) => {
-  return {
-    categoryUpdate: category => dispatch(categoryUpdate(category)),
-    categoryDelete: category => dispatch(categoryDelete(category)),
+  return{
+    expenseUpdate: expense => dispatch(expenseUpdate(expense)),
+    expenseCreate: expense => dispatch(expenseCreate(expense)),
+    expenseDelete: expense => dispatch(expenseDelete(expense)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(CategoryItem);
-
-// CategoryItem Component
-//
-// should display the category's name and budget
-// should display a delete button
-// onClick the category should be removed from the application state
-// should display a CategoryForm
-// onComplete the form should update the component in the application state
+export default connect(null, mapDispatchToProps)(ExpenseItem);

@@ -24,7 +24,7 @@ class DashboardContainer extends React.Component {
         <CategoryForm
           buttonText='create expense'
           onComplete={this.props.categoryCreate} />
-        <ul className="category-list">
+        <div className="category-list">
           {this.props.categories.map((item) => {
             return (
               <CategoryItem
@@ -36,7 +36,7 @@ class DashboardContainer extends React.Component {
             );
           }
           )}
-        </ul>
+        </div>
       </main>
     );
   }
@@ -44,7 +44,7 @@ class DashboardContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    categories: state,
+    categories: state.categories,
   };
 };
 

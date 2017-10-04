@@ -1,27 +1,11 @@
-![cf](https://i.imgur.com/7v5ASc8.png) 26: React & Redux
+![cf](https://i.imgur.com/7v5ASc8.png) 27: Combining Reducers
 ======
 
-# Lab26-Isaiah
+# Lab27-Isaiah
 
 ### Completed Following Featured Tasks:
-+ Category
-  * [x] in this application, a category should contain *(at least)* the following properties
-    * [x] `id` - a unique identifier
-    * [x] `timestamp` - a date from when the category was created
-    * [x] `name` - a string that is the name of the category
-    * [x] `budget` - a number that is the total amount of money in the category
-+ reducer
-  * [x] create a category reducer in your your reducer directory
-  * [x] this reducer should support the following interactions
-    * [x] `CATEGORY_CREATE`
-    * [x] `CATEGORY_UPDATE`
-    * [x] `CATEGORY_DESTORY`
-+ action creators
-  * [x] create an action creator for each interaction supported by your category reducer
-+ store
-  * [x] in `lib/store.js` export a function that will return a new redux store from your category reducer
-+ Components
-  * [x] create the following component and structure it according to the diagram below:
+
+<!-- Need to add featured tasks section -->
 
 ### Documentation:
 This lab to provide a better understanding of how react and redux operate together.
@@ -29,23 +13,20 @@ This lab to provide a better understanding of how react and redux operate togeth
 ##### The following is the assignment as presented:
 
 ```md
-![cf](https://i.imgur.com/7v5ASc8.png) 26: React & Redux
+![cf](https://i.imgur.com/7v5ASc8.png) 27: Combining Reducers
 ======
 
 ## Submission Instructions
-* fork this repository & create a new branch for your work
-* write all of your code in a directory named `lab-` + `<your name>` **e.g.** `lab-susan`
-* push to your repository
-* submit a pull request to this repository
+* continue working on the fork you created from lab 26
+* open a **new branch** for today's assignment
+* upon completion, create a **new pull request** in github
 * submit a link to your PR in canvas
-* write a question and observation on canvas
 
 ## Learning Objectives
-* students will be able to use redux with react
-* students will be able to design redux reducers for controlling application state
-* students will learn to design action creator functions for working with redux
+* students will be able to combine reducers to simplify the management of complex application states
+* students will continue to work with the fundamental principles of redux to gain a better understanding on state management
 
-## Requirements  
+## Requirements
 #### Configuration  
 * `README.md`
 * `.babelrc`
@@ -58,58 +39,64 @@ This lab to provide a better understanding of how react and redux operate togeth
 * `src/style/main.scss`
 
 #### Feature Tasks
-##### Category
-* in this application, a category should contain *(at least)* the following properties
+##### Expense
+* in this app, an expense should contain *(at least)* the following properties
   * `id` - a unique identifier
   * `timestamp` - a date from when the category was created
   * `name` - a string that is the name of the category
-  * `budget` - a number that is the total amount of money in the category
+  * `categoryId` - an id that corresponds to an existing category
+  * `price` - a number that is the total amount of $ in the category
 
 ##### Redux
-###### reducer
-* create a category reducer in your your reducer directory
+###### app reducer
+* export a reducer that holds the entire app state from `reducer/index.js`
+* create a reducer that will combine your `categories` reducer and `expenses` reducer
+
+###### expenses reducer
+* create a expense reducer in your your reducer directory
 * this reducer should support the following interactions
-  * `CATEGORY_CREATE`
-  * `CATEGORY_UPDATE`
-  * `CATEGORY_DESTORY`
+  * `CATEGORY_CREATE` - create a category array to store expense objects
+  * `CATEGORY_DELETE` - delete the whole category key/value pair from the expense object
+  * `EXPENSE_CREATE` - store an expense
+  * `EXPENSE_UPDATE` - update an existing expense
+  * `EXPENSE_DELETE` - delete an existing expense
+* if you need others feel free to add them
 
 ###### action creators
-* create an action creator for each interaction supported by your category reducer
+* you should create an action creator for each interaction supported by your expenses reducer
 
 ###### store
-* in `lib/store.js` export a function that will return a new redux store from your category reducer
+* in `lib/store.js` export a function that will return a redux store from your app reducer
 
 ##### Components
 * create the following component and structure it according to the diagram below:
-```
-Provider
-  App  
+
+App
+  Provider
     BrowserRouter
       Route / Dashboard
         CategoryForm -- for creating categories
-        [Category Item]
+        [Category Item] -- list of Category items
            CategoryForm  -- for updating categories
-```
+           ExpenseForm -- for creating expenses
+           [ExpenseItem]  -- list of expense items
+              ExpenseForm -- for updating an expense
 
-###### App Component
-* the App component should setup the `Provider` for the redux store and the `Router`
 
-###### Dashboard Component
-* should be displayed on the `/` route
-* should use react-redux's `connect` to map state and dispatch methods to props
-* should display a `CategoryForm` for adding categories to the application state
-* should display a `CategoryItem` for each category in the application state
+###### Update the CategoryItem Component
+* should keep all of the features described in lab-26
+* add an `ExpenseForm` to your category item that enables the user to create expenses on your app state
+* display all of the `ExpenseItem`'s belonging to the category
 
-###### CategoryForm Component
-* should expect an `onComplete` prop to be a function
-  * that function should be invoked with the `CategoryForm`'s state when the form is submitted
-* should expect a `buttonText` prop to configure the submit button text
-* should support an optional `category` prop that will initialize the state of the form
+##### ExpenseForm Component
+* should have an `onComplete` prop that will be invoked with the form state on submit
+* should support an `expense` prop that will set the initial form state and update the state (using hook `componentWillReceiveProps()`)
+* should have a `buttonText` prop that will configure the submit button's text
 
-###### CategoryItem Component
-* should display the category's name and budget
-* should display a delete button
-  * `onClick` the category should be removed from the application state
-* should display a `CategoryForm`
-  * `onComplete` the form should update the component in the application state
+##### ExpenseItem Component
+* should have a button that will delete the expense from the appState `onClick`
+* should display the `name` and `price` of the component
+* should display an `ExpenseForm` that will enable the user to update the expense in the app state
+
+
 ```

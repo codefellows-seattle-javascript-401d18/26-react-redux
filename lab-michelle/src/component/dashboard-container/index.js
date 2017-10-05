@@ -3,6 +3,9 @@ import {connect} from 'react-redux';
 import {
   categoryDestroy, categoryCreate, categoryUpdate,
 } from '../../action/category-actions';
+import {
+  expenseCreate, expenseUpdate, expenseDelete,
+} from '../../action/expense-actions';
 import CategoryForm from '../category-form';
 import CategoryItem from '../category-item';
 import ExpenseForm from '../expense-form';
@@ -61,6 +64,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, getState) => {
   return {
     categoryCreate: category => dispatch(categoryCreate(category)),
+    expenseCreate: expense => dispatch(expenseCreate(expense)),
   };
 };
 

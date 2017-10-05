@@ -9,7 +9,7 @@ class ExpenseForm extends React.Component {
       // name: props.expense.name,
       // price: props.expense.price,
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -17,16 +17,20 @@ class ExpenseForm extends React.Component {
     console.log('__EXPENSE_PROPS__', this.props);
   }
 
-  handleChange(e) {
-    // this.setState({ name: e.target.value });
-    this.setState({ price: e.target.value });
+  handleInputChange(e) {
+    const target = e.target;
+    const value = target.type === value;
+    const nameForInput = target.nameForInput;
+
+    this.setState({
+      [nameforinput]: value,
+    });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.onComplete(Object.assign({}, this.state));
-    this.setState({price: 0});
-    this.setState({name: ''});
+
   }
 
   render() {
@@ -34,6 +38,7 @@ class ExpenseForm extends React.Component {
       <form className = "expense-form" onSubmit= {this.handleSubmit}>
         <input
           required
+          nameforinput = 'cost'
           type="number"
           price= "0"
           placeholder = "0"
@@ -43,10 +48,10 @@ class ExpenseForm extends React.Component {
         <input
           required
           type="text"
+          nameforinput = 'expenseDesc'
           name="name"
           placeholder="enter an expense"
-          value={this.state.name}
-          onChange = {this.handleChange}/>
+          value={this.state.name}/>
 
         <button type="submit">{this.props.buttonText}</button>
         </form>

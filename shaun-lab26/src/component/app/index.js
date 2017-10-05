@@ -10,10 +10,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
   }
-//creatting my entire app with a console log
+  //creatting my entire app with a console log
   componentDidMount() {
     store.subscribe(() => {
       console.log('__STATE__', store.getState());
+      console.log(this.props);
+
     });
 
     store.dispatch({ type: null });

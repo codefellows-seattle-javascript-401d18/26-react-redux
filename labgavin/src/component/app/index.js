@@ -12,11 +12,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    store.subscribe(() => {
-      console.log('__STATE__', store.getState());
-      store.getState();
-    });
-
     store.dispatch({ type: null });
   }
 

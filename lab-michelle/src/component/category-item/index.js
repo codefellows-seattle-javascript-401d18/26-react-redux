@@ -1,19 +1,43 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import ExpenseItem from '../expense-item';
+import ExpenseForm from '../expense-form';
 import CategoryForm from '../category-form';
-// import uuid from 'uuid/v4';
-import {categoryUpdate, categoryDelete} from '../../action/category-actions';
+import {expenseCreate} from '../../action/expense-actions';
+import {categoryUpdate, categoryDestroy} from '../../action/category-actions';
 
 class CategoryItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      expenseForm: false,
+      categoryForm: false,
+    };
+    this.toggleExpense = this.toggleExpense.bind(this);
+    this.toggleCategory = this.toggleCategory.bind(this);
+  }
+
+  toggleExpense() {
+    this.setState({expenseForm: !this.state.expenseForm});
+  }
+
+  toggleCategory() {
+    this.setState({categoryForm: !this.state.categoryForm});
+  }
+
+  componentDidUpdate() {
+    console.log('Is it updating? YES!');
   }
 
   render() {
     return (
       <div className = "category-item">
-      <button onClick={() => this.props.categoryDelete(this.props.catgory)}>X</button>
-      <h3>{this.props.category.title}</h3>
+        <div className= "content-container">
+          <button onClick={() => this.props.categoryDestroy(this.props.category)}>X</button>
+          //Adding the toggle since I didn't do that in 27 previously...
+          <button onClick={this.toggleCard}>new expense</button>
+          <h3>{this.props.category.title}</h3>
+    
       <CategoryForm
         buttonText="update"
         onComplete = {this.props.categoryUpdate}
@@ -32,7 +56,7 @@ let mapStateToProps = state => {
 let mapDispatchToProps = (dispatch, getState) => {
   return {
     categoryUpdate: category => dispatch(categoryUpdate(category)),
-    categoryDelete: category => dispatch(categoryDelete(category)),
+    categoryDestroy: category => dispatch(categoryDestroy(category)),
   };
 };
 

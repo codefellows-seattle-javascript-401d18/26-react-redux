@@ -23,7 +23,7 @@ class ExpenseForm extends React.Component {
     const nameForInput = target.nameForInput;
 
     this.setState({
-      [nameforinput]: value,
+      [name]: value,
     });
   }
 
@@ -38,7 +38,7 @@ class ExpenseForm extends React.Component {
       <form className = "expense-form" onSubmit= {this.handleSubmit}>
         <input
           required
-          nameforinput = 'cost'
+          name = 'cost'
           type="number"
           price= "0"
           placeholder = "0"
@@ -48,7 +48,6 @@ class ExpenseForm extends React.Component {
         <input
           required
           type="text"
-          nameforinput = 'expenseDesc'
           name="name"
           placeholder="enter an expense"
           value={this.state.name}/>

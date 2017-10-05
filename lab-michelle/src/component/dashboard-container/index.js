@@ -35,6 +35,7 @@ class DashboardContainer extends React.Component {
             <h2>Add some categories</h2>
         }
     );
+    //some kind of if here to check if a category has been created before we display these?
       <ExpenseForm
         buttonText = "create"
           onComplete = {this.props.expenseCreate}/>
@@ -56,8 +57,8 @@ class DashboardContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    categories: state,
-    expenses: state,
+    categories: state.categories,
+    expenses: state.expenses,
   };
 };
 

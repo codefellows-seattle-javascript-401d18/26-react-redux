@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
-  categoryCreate,
+  categoryDestroy, categoryCreate, categoryUpdate,
 } from '../../action/category-actions';
 import CategoryForm from '../category-form';
 import CategoryItem from '../category-item';
@@ -10,7 +10,6 @@ import CategoryItem from '../category-item';
 class DashboardContainer extends React.Component {
   componentDidMount() {
     console.log('__DASHBOARD__', this);
-    // this.props.categoryCreate({name: 'Fake Expense Category'});
   }
 
   render() {

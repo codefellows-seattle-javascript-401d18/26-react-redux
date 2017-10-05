@@ -7,33 +7,34 @@ import {expenseUpdate, expenseDelete, expenseCreate} from '../../action/expense-
 
 //host my expense items
 class ExpenseItem extends React.Component {
-  render() {
-    let {expenseUpdate, expenseDelete, expense, category} = this.props;
+  constructor(props) {
+    super(props);
+    this.state = {
+      expenseEdit: false,
+    };
+    this.toggleUpdate = this.toggleUpdate.bind(this);
+  }
 
+  toggleUpdate(e) {
+    this.setState({
+      expenseEdit: !this.state.expenseEdit,
+    });
+  }
+
+  render() {
     return (
-      <li className='expense-content'>
-        <div>
-          <div className='expense-content'>
-            <p>{expense.title}</p>
-            <p>{expense.price}</p>
-            <button className='remove' onClick={() => expenseDelete(expense)}>X</button>
-          </div>
-          <div className='expense-editing'>
-            <ExpenseForm
-              buttonText='update expense'
-              onComplete={expenseUpdate}
-            />
-          </div>
-        </div>
-      </li>
+      <div className='expense-item'>
+        <h3 key={this.props.expense.id}>{this.props.expense.name} at ${this.props.expense.price}</h3>
+        // <button className='remove' onClick={() => expenseDelete(expense)}>X</button>
+      </div>
     );
   }
 }
 
 
-let mapDispatchToProps = (dispatch) => ({
-  expenseUpdate: (expense) => dispatch(expenseUpdate(expense)),
-  expenseDelete: (expense) => dispatch(expenseDelete(expense)),
-});
+// let mapDispatchToProps = (dispatch) => ({
+//   expenseUpdate: (expense) => dispatch(expenseUpdate(expense)),
+//   expenseDelete: (expense) => dispatch(expenseDelete(expense)),
+// });
 
-export default connect(mapDispatchToProps)(ExpenseItem);
+export default ExpenseItem

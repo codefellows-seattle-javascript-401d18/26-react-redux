@@ -7,8 +7,10 @@ class ExpenseForm extends React.Component {
     super(props);
     this.state = {
       title: props.expense ? props.expense.name : '',
-      price: props.expense ? props.expense.price : '',
-      categoryId: props.expense ? props.expense.categoryId : '',
+      price: props.expense ? props.expense.price : '0',
+      categoryId: props.expense ? props.expense.categoryId : null,
+      id: props.expense ? props.expense.id : null,
+      timestamp: props.expense ? props.expense.timestamp : null,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -34,19 +36,21 @@ class ExpenseForm extends React.Component {
   }
 
   render() {
+    console.log('Expense from state', this.state);
     return (
       <form className="expense-form" onSubmit={this.handleSubmit}>
         <input
           type="text"
           name="title"
           placeholder="enter a budget category"
-          value={this.state.title}
+          value={this.state.name}
           onChange={this.handleChange} />
         <input
           type="number"
+          step="0.01"
           name="price"
           placeholder="price"
-          value={this.state.budget}
+          value={this.state.price}
           onChange={this.handleChange} />
         <button type="submit">{this.props.buttonText}</button>
       </form>

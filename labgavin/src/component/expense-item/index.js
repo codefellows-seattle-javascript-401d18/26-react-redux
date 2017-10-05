@@ -9,22 +9,23 @@ class ExpenseItem extends React.Component {
 
 
     return (
-      <li className='expense-item'>
+      <div className='expenseItem'>
         <div>
           <div className='expense-content'>
+            <h4>{this.props.buttonText} Expense</h4>
             <p>{this.props.expense.title}</p>
             <p>{this.props.expense.price}</p>
             <button className='remove' onClick={() => this.props.expenseDelete(this.props.expense)}>X</button>
           </div>
-          <div className='expense-editing'>
+          <div className='expenseEditing'>
             <ExpenseForm
               categoryID={this.props.expense.categoryID}
-              buttonText='update expense'
+              buttonText='Update'
               onComplete={this.props.expenseUpdate}
             />
           </div>
         </div>
-      </li>
+      </div>
     );
   }
 }

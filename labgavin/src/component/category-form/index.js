@@ -40,7 +40,7 @@ class CategoryForm extends React.Component {
   render() {
     return (
       <form className="category-form" onSubmit={this.handleSubmit}>
-        <h4>{this.props.buttonText} expense category</h4>
+        <h4>{this.props.buttonText} category</h4>
         <input
           type="text"
           name="title"

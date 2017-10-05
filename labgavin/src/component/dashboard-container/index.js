@@ -12,13 +12,7 @@ import CategoryItem from '../category-item';
 class DashboardContainer extends React.Component {
 
   componentDidMount() {
-    console.log('__DASHBOARD__', this.props);
-
     this.props.categoryCreate({title: 'Dining Out', budget: '500'});
-  }
-
-  componentDidReceiveProps(){
-
   }
 
   render() {

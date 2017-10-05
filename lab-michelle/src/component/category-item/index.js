@@ -60,7 +60,7 @@ let mapDispatchToProps = (dispatch, getState) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(CategoryItem);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem);
 
 // CategoryItem Component
 //

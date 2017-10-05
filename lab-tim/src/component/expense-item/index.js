@@ -8,8 +8,12 @@ import {
 } from '../../action/expense-actions';
 import ExpenseForm from '../expense-form';
 
+
 class ExpenseItem  extends React.Component {
   render() {
+    console.log('__EXPENSE ITEM STATE__', this.state);
+    console.log('__EXPENSE ITEM PROPS__', this.props);
+
     return (
       <div className="expense-item">
         <p>{this.props.expense.name}: {this.props.expense.price}</p>

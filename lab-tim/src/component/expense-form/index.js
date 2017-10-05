@@ -6,8 +6,8 @@ class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      //id: props.expense ? props.expense.id : '',
-      //timestamp: props.expense ? props.expense.timestamp : '',
+      id: props.expense ? props.expense.id : undefined,
+      timestamp: props.expense ? props.expense.timestamp : undefined,
       name: props.expense ? props.expense.name : '',
       price: props.expense ? props.expense.price : '',
       categoryId: props.expense ? props.expense.categoryId : props.categoryId,

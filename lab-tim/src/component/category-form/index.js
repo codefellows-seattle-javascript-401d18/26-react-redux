@@ -9,8 +9,8 @@ class CategoryForm extends React.Component {
       title: props.category ? props.category.title : '',
       id: props.category ? props.category.id : null,
       budget: props.category ? props.category.budget : '',
+      timestamp: props.category ? props.category.timestamp : '',
       //name: props.category ? props.category.name : '',
-      //timestamp: props.category ? props.category.timestamp : '',
     };
 
     this.handleChange = this.handleChange.bind(this);

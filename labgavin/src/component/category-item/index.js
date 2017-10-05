@@ -17,7 +17,7 @@ class CategoryItem extends React.Component {
     let {category, categoryUpdate, categoryDelete, expense, expenses} = this.props;
     return(
       <section>
-        <li className='list'>
+        <div className='list'>
           <h2>{category.title}</h2>
           <h3>Budget: {category.budget}</h3>
           <CategoryForm
@@ -29,17 +29,17 @@ class CategoryItem extends React.Component {
           <div className='expense-container'>
             <ExpenseForm
               categoryID={category.id}
-              buttonText='create expense'
+              buttonText='Create'
               onComplete={this.props.expenseCreate}
             />
 
-            <ul className='expense-items'>
+            <div className='expense-items'>
               {this.props.expenses.map(expense =>
                 <ExpenseItem key={expense.id} expense={expense} category={this.props} />
               )}
-            </ul>
+            </div>
           </div>
-        </li>
+        </div>
 
       </section>
     );

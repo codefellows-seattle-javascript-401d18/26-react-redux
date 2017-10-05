@@ -16,7 +16,7 @@ class DashboardContainer extends React.Component {
 
     this.props.categoryCreate({title: 'Dining Out', budget: '500'});
   }
-  
+
   componentDidReceiveProps(){
 
   }
@@ -24,16 +24,16 @@ class DashboardContainer extends React.Component {
   render() {
     return (
       <main className="dashboard-container">
-        <h1>Dashboard</h1>
+        <h1>Track your Budget</h1>
         <h2>Total Monthly Budget: {this.props.totalMonthly}</h2>
         <h2>Total remaining: {this.props.totalRemaining}</h2>
-
-        <CategoryForm
-          buttonText='Create'
-          onComplete={this.props.categoryCreate} />
-        <ul className="categoryList">
+        <div className='categoryForm'>
+          <CategoryForm
+            buttonText='Create'
+            onComplete={this.props.categoryCreate} />
+        </div>
+        <div className="categoryList">
           {this.props.categories.map((item) => {
-            console.log(item, 'thisisitem');
             return (
               <CategoryItem
                 key={item.id}
@@ -42,7 +42,7 @@ class DashboardContainer extends React.Component {
             );
           }
           )}
-        </ul>
+        </div>
       </main>
 
     );

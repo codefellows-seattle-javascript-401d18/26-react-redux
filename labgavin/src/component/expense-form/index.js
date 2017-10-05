@@ -1,4 +1,5 @@
 import React from 'react';
+import './_expense-form.scss';
 
 class ExpenseForm extends React.Component {
   constructor(props) {
@@ -39,19 +40,20 @@ class ExpenseForm extends React.Component {
 
   render() {
     return (
-      <form className='expense-form' onSubmit={this.handleSubmit}>
+      <form className='expenseForm' onSubmit={this.handleSubmit}>
+        <h4>{this.props.buttonText} expense</h4>
         <input
           name='title'
           type='text'
           placeholder='title'
           value={this.state.value}
-          onChange={this.handleChange} />
+          onChange={this.handleChange} /><br/>
         <input
           name='price'
           type='number'
           placeholder='price'
           value={this.state.value}
-          onChange={this.handleChange} />
+          onChange={this.handleChange} /><br/>
         <button type='submit'>{this.props.buttonText}</button>
       </form>
     );

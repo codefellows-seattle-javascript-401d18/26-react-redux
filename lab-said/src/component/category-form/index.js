@@ -13,6 +13,13 @@ class CategoryForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  componentWillReceiveProps(props) {
+    if (props.category) {
+      this.setState(props.category);
+    }
+  }
+
   handleChange(e) {
     this.setState ({ [e.target.name] : e.target.value });
   }
@@ -46,7 +53,6 @@ class CategoryForm extends React.Component {
 
       <button type="submit">{this.props.buttonText}</button>
       </form>
-
     );
   }
 }

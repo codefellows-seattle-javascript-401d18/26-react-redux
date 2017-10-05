@@ -14,7 +14,7 @@ class ExpenseItem extends React.Component {
           <div className='expense-content'>
             <p>{this.props.expense.title}</p>
             <p>{this.props.expense.price}</p>
-            <button className='expense-delete' onClick={() => this.props.expenseDelete(this.props.expense)}>Delete</button>
+            <button className='remove' onClick={() => this.props.expenseDelete(this.props.expense)}>Delete</button>
           </div>
           <div className='expense-editing'>
             <ExpenseForm
@@ -30,7 +30,6 @@ class ExpenseItem extends React.Component {
 }
 
 let mapStateToProps = () => ({});
-
 let mapDispatchToProps = (dispatch, getState) => ({
   expenseUpdate: (expense) => dispatch(expenseUpdate(expense)),
   expenseDelete: (expense) => dispatch(expenseDelete(expense)),

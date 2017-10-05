@@ -1,57 +1,59 @@
 import React from 'react';
+
 import {connect} from 'react-redux';
+
 import {
   categoryCreate,
   categoryUpdate,
   categoryDelete,
 } from '../../action/category-actions';
+
 import CategoryForm from '../category-form';
 
 import CategoryItem from '../category-item';
 
 class DashboardContainer extends React.Component {
+
   componentDidMount() {
-    console.log('__DASHBOARD__', this);
+    console.log('__DASHBOARD__', this.props);
+  }
+
+  componentDidReceiveProps(){
+
   }
 
   render() {
     return (
-      <main className="main-content">
-        <h2>Dashboard</h2>
-
-        <h2>Monthly Budget: {this.props.totalMonthly}</h2>
-        <h2>
-        Total Spent: </h2>
-        <h2>Total remaining: {this.props.totalMonthly}</h2>
+      <main className="dashboard-container">
+        <h1>Dashboard</h1>
+        <h2>Monthly Budget: ${this.props.totalMonthly}</h2>
+        <h2>Total Spent: ${this.props.totalRemaining}</h2>
+        <h2>Remaining: ${this.props.totalRemaining}</h2>
 
         <CategoryForm
           buttonText='Create'
-          onComplete={this.props.categoryCreate}/>
-
-          <ul className="categoryList">
+          onComplete={this.props.categoryCreate} />
+        <ul className="categoryList">
           {this.props.categories.map((item) => {
+            console.log(item, 'thisisitem');
             return (
               <CategoryItem
                 key={item.id}
                 category={item}
-                categoryDelete={this.props.categoryDelete}
-                categoryUpdate={this.props.categoryUpdate}
               />
             );
           }
           )}
         </ul>
-          <h2>Add some categories</h2>
-
       </main>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     categories: state.categories,
-    expenses: state.expenses,
+    totalMonthly: 5000,
   };
 };
 

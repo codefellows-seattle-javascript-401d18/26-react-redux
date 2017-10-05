@@ -8,6 +8,7 @@ export default (state=initialState, action) => {
     return [...state, payload];
 
   case 'CATEGORY_UPDATE':
+    console.log('CATEGORY_UPDATE', payload);
     return state.map((category) => category.id === payload.id ? payload : category);
 
   case 'CATEGORY_DELETE':

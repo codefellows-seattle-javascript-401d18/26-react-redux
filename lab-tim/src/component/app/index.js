@@ -14,7 +14,7 @@ class App extends React.Component {
     store.subscribe(() => {
       console.log('__STATE__', store.getState());
     });
-
+    // sets an initial state for the console log above
     store.dispatch({ type: null });
   }
 

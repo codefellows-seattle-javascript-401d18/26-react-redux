@@ -22,7 +22,7 @@ class CategoryItem  extends React.Component {
           onComplete={this.props.categoryUpdate}
           category={this.props.category}
         />
-        <button className='delete-button' onClick={()=>this.props.categoryDelete(this.props.category)}>X</button>
+        <button className='category-delete' onClick={()=>this.props.categoryDelete(this.props.category)}>X</button>
         <ExpenseForm
           buttonText='create expense'
           categoryId={this.props.category.id}

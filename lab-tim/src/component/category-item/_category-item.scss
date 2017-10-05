@@ -8,3 +8,13 @@ $color-primary-4: #05000A;
   background: $color-primary-1;
   color: $color-primary-4;
 }
+
+.category-delete {
+  background-color: $color-primary-2;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}

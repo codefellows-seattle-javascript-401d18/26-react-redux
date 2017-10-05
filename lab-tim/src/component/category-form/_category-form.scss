@@ -7,26 +7,26 @@ $color-primary-4: #05000A;
 .category-form {
   background: $color-primary-1;
   color: $color-primary-4;
-}
 
-input {
-  width: 10vw;
-  height: 3vh;
-  padding: 2px 4px;
-  border: 2px solid $color-primary-4;
-  border-radius: 4px;
-}
+  input {
+    width: 10vw;
+    height: 3vh;
+    padding: 6px 12px;
+    border: 2px solid $color-primary-4;
+    border-radius: 4px;
+  }
 
-input:focus {
-    background-color: $color-primary-2;
-}
+  input:focus {
+      background-color: $color-primary-2;
+  }
 
-button[type=submit] {
-    background-color: $color-primary-2;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
+  button[type=submit] {
+      background-color: $color-primary-2;
+      border: none;
+      color: white;
+      padding: 16px 32px;
+      text-decoration: none;
+      margin: 4px 2px;
+      cursor: pointer;
+  }
 }

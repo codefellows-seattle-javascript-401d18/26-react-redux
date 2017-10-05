@@ -1,14 +1,16 @@
+import './_expense-form.scss';
+
 import React from 'react';
 
 class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.expense ? props.expense.id : '',
+      //id: props.expense ? props.expense.id : '',
+      //timestamp: props.expense ? props.expense.timestamp : '',
       name: props.expense ? props.expense.name : '',
       price: props.expense ? props.expense.price : '',
-      timestamp: props.expense ? props.expense.timestamp : '',
-      categoryId: props.expense ? props.expense.categoryId : '',
+      categoryId: props.expense ? props.expense.categoryId : props.categoryId,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -21,13 +23,15 @@ class ExpenseForm extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({ name: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.onComplete(Object.assign({}, this.state));
-    this.setState({name: ''});   //this line clears out the submit box on submit click
+    if (!this.props.expense) {
+      this.setState({name: ''});   //this line clears out the submit box on submit click
+    }
   }
 
   render() {
@@ -39,6 +43,13 @@ class ExpenseForm extends React.Component {
           name="name"
           placeholder="enter an expense"
           value={this.state.name}
+          onChange={this.handleChange}/>
+        <input
+          required
+          type="number"
+          name="price"
+          placeholder="price"
+          value={this.state.price}
           onChange={this.handleChange}/>
         <button type="submit">{this.props.buttonText}</button>
       </form>

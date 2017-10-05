@@ -16,7 +16,7 @@ class CategoryItem  extends React.Component {
     return (
       <div className='category-item'>
         <h2>{this.props.category.title}</h2>
-        <h3>{this.props.category.budget}</h3>
+        <h3>total: ${this.props.category.budget}</h3>
         <CategoryForm
           buttonText='update category'
           onComplete={this.props.categoryUpdate}

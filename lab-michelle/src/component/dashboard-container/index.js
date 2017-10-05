@@ -5,7 +5,8 @@ import {
 } from '../../action/category-actions';
 import CategoryForm from '../category-form';
 import CategoryItem from '../category-item';
-
+import ExpenseForm from '../expense-form';
+import ExpenseItem from '../expense-item';
 
 class DashboardContainer extends React.Component {
   componentDidMount() {
@@ -30,7 +31,22 @@ class DashboardContainer extends React.Component {
             </div> :
             <h2>Add some categories</h2>
         }
-      </main>
+    );
+      <ExpenseForm
+        buttonText = "create"
+          onComplete = {this.props.expenseCreate}/>
+
+            {this.props.expenses.length ?
+              <div>
+                {this.props.expenses.map(expense => {return <ExpenseItem
+                  key={expense.id}
+                  name = {expense.name}
+                  price = {expense.price}/>;
+                })}
+              </div> :
+              <h2>Add some expenses</h2>
+          }
+        </main>
     );
   }
 }
@@ -38,6 +54,7 @@ class DashboardContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     categories: state,
+    expenses: state,
   };
 };
 

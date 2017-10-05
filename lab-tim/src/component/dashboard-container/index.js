@@ -9,16 +9,16 @@ import {categoryCreate as categoryActionCreate} from '../../action/category-acti
 class DashboardContainer extends React.Component {
   componentDidMount() {
     console.log('__DASHBOARD__', this);
-    this.props.categoryCreate({title: 'Rent', budget: '2000'});
-    this.props.categoryCreate({title: 'Food', budget: '500'});
-    this.props.categoryCreate({title: 'Auto', budget: '500'});
+    this.props.categoryCreate({title: 'rent', budget: '2000'});
+    this.props.categoryCreate({title: 'food', budget: '500'});
+    this.props.categoryCreate({title: 'auto', budget: '500'});
   }
 
   render() {
     return (
-      <main className="main-content">
-
-        <h2>Budget Tracker Dashboard</h2>
+      <main className="dashboard-container">
+        <h1>expense tracker dashboard</h1>
+        <h2>create a new category.</h2>
         <CategoryForm
           buttonText='create category'
           onComplete={this.props.categoryCreate} />

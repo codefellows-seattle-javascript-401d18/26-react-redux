@@ -12,8 +12,7 @@ class ExpenseItem  extends React.Component {
   render() {
     return (
       <div className="expense-item">
-        <p>{this.props.expense.name}</p>
-        <p>{this.props.expense.price}</p>
+        <p>{this.props.expense.name}: {this.props.expense.price}</p>
         <button className='expense-delete' onClick={()=>this.props.expenseDelete(this.props.expense)}>X</button>
         <ExpenseForm
           categoryId={this.props.expense.categoryId}
@@ -24,11 +23,7 @@ class ExpenseItem  extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
-  return {
-    expenses: state.expenses[props.category.id],
-  };
-};
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch, getState) => {
   return {

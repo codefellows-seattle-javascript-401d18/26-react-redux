@@ -4,7 +4,7 @@ class CategoryForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: props.cateogry ? props.category.title : '',
+      title: props.category ? props.category.title : '',
       budget: props.category ? props.category.budget : '',
       id: props.category ? props.category.id : null,
       timestamp: props.category ? props.category.timestamp : null,

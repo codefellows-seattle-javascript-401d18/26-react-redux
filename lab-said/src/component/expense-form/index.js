@@ -5,7 +5,7 @@ class ExpenseForm extends React.Component {
     super(props);
     this.state = props.expense
       ? {...props.expense}
-      : {content: '', categoryId: props.categoryId };
+      : {content: '', categoryID: props.categoryID };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -14,8 +14,8 @@ class ExpenseForm extends React.Component {
   componentWillReceiveProps(props){
     if(props.expense)
       this.setState({...props.expense});
-    if(props.categoryId)
-      this.setState({categoryId: props.categoryId});
+    if(props.categoryID)
+      this.setState({categoryID: props.categoryID});
   }
 
   handleChange(e){

@@ -3,9 +3,12 @@ import React from 'react';
 class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = props.expense
-      ? {...props.expense}
-      : {content: '', price: '', categoryID: props.categoryID };
+    this.state = {
+      content: props.expense ? props.expense.name : '',
+      price: props.expense ? props.expense.price : '',
+      categoryID: props.expense ? props.expense.categoryID  : props.categoryID,
+      id: props.expense ? props.expense.id  : props.id,
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,7 +43,7 @@ class ExpenseForm extends React.Component {
           name='content'
           type='text'
           placeholder='content'
-          value={this.state.content}
+          value={this.state.val}
           onChange={this.handleChange} required/>
 
         <input

@@ -8,9 +8,9 @@ import ExpenseItem from '../expense-item';
 
 import { connect } from 'react-redux';
 
-import {categoryUpdate, categoryDelete} from '../../action/category-actions.js';
+import {categoryUpdate, categoryDelete} from '../../action/category-actions';
 
-import {expenseUpdate, expenseDelete, expenseCreate} from '../../action/expense-actions.js';
+import {expenseUpdate, expenseDelete, expenseCreate} from '../../action/expense-actions';
 
 class CategoryItem extends React.Component {
 

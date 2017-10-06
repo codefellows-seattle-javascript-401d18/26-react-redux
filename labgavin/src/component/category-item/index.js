@@ -9,7 +9,24 @@ import {expenseUpdate, expenseDelete, expenseCreate} from '../../action/expense-
 
 
 class CategoryItem extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      editCategory: false,
+      expenseBox: false,
+    };
+    this.toggleCategory = this.toggleCategory.bind(this);
+    this.toggleExpense = this.toggleExpense.bind(this);
+  }
 
+  toggleCategory() {
+    this.setState({editCategory: !this.state.editCategory});
+    console.log('thi');
+  }
+
+  toggleExpense() {
+    this.setState({expenseBox: !this.state.expenseBox});
+  }
 
 
 
@@ -20,12 +37,17 @@ class CategoryItem extends React.Component {
         <div className='list'>
           <h2>{category.title}</h2>
           <h3>Budget: {category.budget}</h3>
-          <CategoryForm
-            buttonText='Update'
-            category={category}
-            onComplete={this.props.categoryUpdate}
-          />
           <button className='deleteButton' onClick={()=>this.props.categoryDelete(this.props.category)}>X</button>
+          <button onClick={this.toggleCategory}>edit card</button>
+          {this.state.editCategory ?
+            <CategoryForm
+              buttonText='Update'
+              category={category}
+              onComplete={this.props.categoryUpdate}
+            />
+            :
+            undefined
+          }
           <div className='expense-container'>
             <ExpenseForm
               categoryID={category.id}

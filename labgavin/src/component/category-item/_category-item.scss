@@ -15,7 +15,30 @@ body {
     background: grey;
     width: 100%;
   }
-  .expenseContainer {
-    display: inline;
+  .expense-content {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .expense-items {
+    display: inline-block;
+  }
+  .expense-items p {
+    max-width: 100%;
+    display: inline-block;
+    margin: 0px 10px 0px 10px;
   }
 }
+// button, select, option {
+//   width: 5%;
+//   margin: ($gutter-sm / 2) 0;
+//   border-radius: $border-radius;
+//   background: $white;
+//   border: 1px solid $black;
+//   transition: 350ms;
+
+//   &:hover {
+//     background: $primary;
+//   }
+// }
+

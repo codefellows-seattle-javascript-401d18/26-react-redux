@@ -1,12 +1,14 @@
 import uuid from 'uuid/v4';
 
 
-///  //creating the three different actions for expenses 
+///  //creating the three different actions for expenses
 
 export const expenseCreate = expense => {
+  expense.id = uuid();
+  expense.timestamp = new Date();
   return {
     type: 'EXPENSE_CREATE',
-    payload: {...expense, id: uuid(), timestamp: new Date()},
+    payload: expense,
   };
 };
 

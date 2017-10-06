@@ -30,7 +30,7 @@ class ExpenseForm extends React.Component {
     this.props.onComplete(this.state);
     if(!this.props.expense)
       this.setState({content: ''});
-      this.setState({price: ''});
+    this.setState({price: ''});
   }
 
   render(){

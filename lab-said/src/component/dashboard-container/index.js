@@ -18,10 +18,6 @@ class DashboardContainer extends React.Component {
     console.log('__DASHBOARD__', this.props);
   }
 
-  componentDidReceiveProps(){
-
-  }
-
   render() {
     return (
       <main className="dashboard-container">

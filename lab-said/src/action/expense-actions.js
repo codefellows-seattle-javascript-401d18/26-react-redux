@@ -7,12 +7,16 @@ export const expenseCreate = (expense) => {
   };
 };
 
-export const expenseUpdate = (expense) => ({
-  type: 'EXPENSE_UPDATE',
-  payload: expense,
-});
+export const expenseUpdate = (expense) => {
+  return {
+    type: 'EXPENSE_UPDATE',
+    payload: expense,
+  };
+};
 
-export const expenseDelete = (expense) => ({
-  type: 'EXPENSE_DELETE',
-  payload: {...expense},
-});
+export const expenseDelete = (expense) => {
+  return {
+    type: 'EXPENSE_DELETE',
+    payload: expense,
+  };
+};

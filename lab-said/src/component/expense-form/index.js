@@ -30,7 +30,7 @@ class ExpenseForm extends React.Component {
     this.props.onComplete(this.state);
     if(!this.props.expense)
       this.setState({content: ''});
-    this.setState({price: ''});
+      this.setState({price: ''});
   }
 
   render(){
@@ -40,15 +40,15 @@ class ExpenseForm extends React.Component {
           name='content'
           type='text'
           placeholder='content'
-          value={this.state.content}
-          onChange={this.handleChange} required/>
+          value={this.state.val}
+          onChange={this.handleChange}/>
 
         <input
           name='price'
           type='number'
           placeholder='price'
           value={this.state.value}
-          onChange={this.handleChange} required/>
+          onChange={this.handleChange}/>
 
         <button type='submit'> {this.props.buttonText} </button>
       </form>

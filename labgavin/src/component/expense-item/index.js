@@ -10,10 +10,10 @@ class ExpenseItem extends React.Component {
     this.state = {
       editCard: false,
     };
-    this.toggleCard = this.toggleCard.bind(this);
+    this.toggleExpense = this.toggleExpense.bind(this);
   }
 
-  toggleCard() {
+  toggleExpense() {
     this.setState({
       editExpense: !this.state.editExpense,
     });
@@ -25,11 +25,10 @@ class ExpenseItem extends React.Component {
       <div className='expenseItem'>
 
         <div className='expense-content'>
-          <h4>{this.props.buttonText} Expense</h4>
-          <p>{this.props.expense.title}</p>
-          <p>{this.props.expense.price}</p>
-          <button className='remove' onClick={() => this.props.expenseDelete(this.props.expense)}>X</button>
-          <button onClick={this.toggleCard}>edit card</button>
+          <h3>{this.props.expense.title}</h3><br/>
+          <p>{this.props.expense.price}</p><br/>
+          <button onClick={() => this.props.expenseDelete(this.props.expense)}>X</button>
+          <button onClick={this.toggleExpense}>edit expense</button>
         </div>
 
         {this.state.editExpense ? 

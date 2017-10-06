@@ -37,8 +37,8 @@ class CategoryItem extends React.Component {
         <div className='list'>
           <h2>{category.title}</h2>
           <h3>Budget: {category.budget}</h3>
-          <button className='deleteButton' onClick={()=>this.props.categoryDelete(this.props.category)}>X</button>
-          <button onClick={this.toggleCategory}>edit card</button>
+          <button onClick={()=>this.props.categoryDelete(this.props.category)}>X</button>
+          <button onClick={this.toggleCategory}>edit category</button>
           {this.state.editCategory ?
             <CategoryForm
               buttonText='Update'
@@ -57,7 +57,9 @@ class CategoryItem extends React.Component {
 
             <div className='expense-items'>
               {this.props.expenses.map(expense =>
-                <ExpenseItem key={expense.id} expense={expense} category={this.props} />
+                <p>
+                  <ExpenseItem key={expense.id} expense={expense} category={this.props} />
+                </p>
               )}
             </div>
           </div>

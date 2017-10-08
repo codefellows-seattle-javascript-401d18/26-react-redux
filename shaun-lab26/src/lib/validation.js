@@ -33,8 +33,7 @@ let Validate = store => next => action => {
     validateExpense(action.payload);
     console.log('expense');
     return result;
-    }
-  };
+    
+};
 
-  export default Validate
-}
+export default Validate

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react';import React from 'react';
 import {connect} from 'react-redux';
 import {categoryCreate} from '../../action/category-actions';
 import CategoryForm from '../category-form';
@@ -6,24 +6,19 @@ import CategoryItem from '../category-item';
 
 class DashboardContainer extends React.Component {
   componentDidMount() {
-    console.log('__DASHBOARD__', this);
     this.props.categoryCreate({title: 'Pizza', budget: 100});
     this.props.categoryCreate({title: 'Clothing', budget: 200});
     this.props.categoryCreate({title: 'Toiletries', budget: 20});
   }
 
-
-
   render() {
-    console.log('this props', this.props);
-    console.log('this props category', this.props.categories);
     return (
       <main className="main-content">
         <h2>Dashboard</h2>
         <CategoryForm
           buttonText="create"
           onComplete={this.props.categoryCreate} />
-        {this.props.categories ?
+        {this.props.categories.length ?
           <div>
             <h6>* Double-click category to edit</h6>
             {this.props.categories.map(item => {
@@ -39,10 +34,9 @@ class DashboardContainer extends React.Component {
 }
 
 let mapStateToProps = state => {
-  console.log('IN MAPSTATE', state);
   return {
     categories: state.categories,
-  // expense: state.expenses,
+    expense: state.expenses,
   };
 };
 
@@ -52,4 +46,4 @@ const mapDispatchToProps = (dispatch, getState) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer

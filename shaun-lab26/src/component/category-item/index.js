@@ -18,7 +18,7 @@ class CategoryItem extends React.Component {
 
     this.toggleExpense = this.toggleExpense.bind(this);
     this.toggleCategory = this.toggleCategory.bind(this);
-  };
+  }
 
   toggleExpense() {
     this.setState({expenseForm: !this.state.expenseForm});

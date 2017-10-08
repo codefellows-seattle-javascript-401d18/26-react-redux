@@ -1,15 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {
-  categoryDestroy, categoryCreate, categoryUpdate,
-} from '../../action/category-actions';
-import {
-  expenseCreate, expenseUpdate, expenseDelete,
-} from '../../action/expense-actions';
+import {categoryCreate} from '../../action/category-actions';
 import CategoryForm from '../category-form';
 import CategoryItem from '../category-item';
-import ExpenseForm from '../expense-form';
-import ExpenseItem from '../expense-item';
 
 class DashboardContainer extends React.Component {
   componentDidMount() {
@@ -23,35 +16,21 @@ class DashboardContainer extends React.Component {
 
         <CategoryForm
           buttonText = "create"
+          toggle={ () => {}}
           onComplete = {this.props.categoryCreate}/>
 
+        <div className = "category-container">
           {this.props.categories.length ?
             <div>
               {this.props.categories.map(item => {return <CategoryItem
                 key={item.id}
                 category = {item}/>;
               })}
-              //and give you the option for expenses?
             </div> :
             <h2>Add some categories</h2>
-      }
-    );
-    //some kind of if here to check if a category has been created before we display these?
-      <ExpenseForm
-        buttonText = "create"
-          onComplete = {this.props.expenseCreate}/>
-
-            {this.props.expenses.length ?
-              <div>
-                {this.props.expenses.map(expense => {return <ExpenseItem
-                  key={expense.id}
-                  name = {expense.name}
-                  price = {expense.price}/>;
-                })}
-              </div> :
-              <h2>Add some expenses</h2>
           }
-        </main>
+          </div>
+      </main>
     );
   }
 }
@@ -59,14 +38,12 @@ class DashboardContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     categories: state.categories,
-    expenses: state.expenses,
   };
 };
 
 const mapDispatchToProps = (dispatch, getState) => {
   return {
     categoryCreate: category => dispatch(categoryCreate(category)),
-    expenseCreate: expense => dispatch(expenseCreate(expense)),
   };
 };
 

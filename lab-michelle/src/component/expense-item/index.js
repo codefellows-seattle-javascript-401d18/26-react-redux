@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import ExpenseForm from '../expense-form';
-import {expenseUpdate, expenseDelete} from '../../action/expense-actions';
+import {expenseUpdate, expenseCreate, expenseDelete} from '../../action/expense-actions';
 
 class ExpenseItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editCard: false,
+      editExpense: false,
     };
     this.toggleExpense = this.toggleExpense.bind(this);
   }

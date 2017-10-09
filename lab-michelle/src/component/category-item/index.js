@@ -53,7 +53,7 @@ class CategoryItem extends React.Component {
       <ExpenseForm
         buttonText="log your expense"
         categoryId = {this.props.category.id}
-        onComplete = {this.props.expenseCreate}
+        onComplete = {this.props.expenseUpdate}
         toggle={this.toggleExpense}/> :
         undefined
     }

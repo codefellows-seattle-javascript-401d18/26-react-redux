@@ -14,10 +14,14 @@ class CategoryForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillReceiveProps(props) {
-    if (props.category) {
-      this.setState(props.category);
-    }
+  // componentWillReceiveProps(props) {
+  //   if (props.category) {
+  //     this.setState(props.category);
+  //   }
+  // }
+
+  componentDidMount() {
+    console.log('__FORM_PROPS__', this.props);
   }
 
   handleChange(e) {

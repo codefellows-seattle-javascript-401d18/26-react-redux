@@ -54,11 +54,10 @@ class CategoryItem extends React.Component {
         buttonText="log your expense"
         categoryId = {this.props.category.id}
         onComplete = {this.props.expenseCreate}
-        toggle={this.toggleExpense}/> :
-        undefined
+        toggle={this.toggleExpense}/>: undefined
     }
 
-    {this.props.expenses[this.props.category.id].length?
+    {this.props.expenses[this.props.category.id].length ?
       this.props.expenses[this.props.category.id].map(expense => <ExpenseItem key={expense.id} expense={expense}/>)
     :
     <h3>No expenses, you must be rich!</h3>

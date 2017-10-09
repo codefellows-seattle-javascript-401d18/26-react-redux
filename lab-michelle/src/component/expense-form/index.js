@@ -8,7 +8,7 @@ class ExpenseForm extends React.Component {
       //state of our expense
       categoryId: props.expense ? props.expense.categoryId : props.categoryId,
       id: props.expense ? props.expense.id : undefined,
-      timestamp: props.card ? props.card.timestamp : undefined,
+      timestamp: props.expense ? props.expense.timestamp : undefined,
       title: props.expense ? props.expense.title: '',
       price: props.expense ? props.expense.price: 0,
     };

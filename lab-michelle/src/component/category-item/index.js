@@ -37,7 +37,7 @@ class CategoryItem extends React.Component {
           //Adding the toggle since I didn't do that in 27 previously...
           <button onClick={this.toggleCard}>new expense</button>
           <h3>{this.props.category.title}</h3>
-    
+
       <CategoryForm
         buttonText="update"
         onComplete = {this.props.categoryUpdate}

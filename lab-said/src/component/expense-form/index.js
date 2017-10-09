@@ -40,7 +40,7 @@ class ExpenseForm extends React.Component {
           name='content'
           type='text'
           placeholder='content'
-          value={this.state.val}
+          value={this.state.value}
           onChange={this.handleChange}/>
 
         <input

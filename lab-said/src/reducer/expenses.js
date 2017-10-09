@@ -1,7 +1,7 @@
 let expenseValidate = expense => {
-  let {id, categoryId, title, content, timestamp} = expense;
-  if(!id || !categoryId || !title || !content || !timestamp) {
-    throw new Error('VALIDATION FAILED: Card must contain id, catId, title, ...');
+  let {id, categoryID, price, content, timestamp} = expense;
+  if(!id || !categoryID || !price || !content || !timestamp) {
+    throw new Error('VALIDATION FAILED: Expense must contain id, catId, title, ...');
   }
 };
 

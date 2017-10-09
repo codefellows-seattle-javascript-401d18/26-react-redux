@@ -1,4 +1,4 @@
-import './category-item.scss';
+import './_category-item.scss';
 import React from 'react';
 import CategoryForm from '../category-form';
 import ExpenseForm from '../expense-form';
@@ -7,62 +7,64 @@ import { connect } from 'react-redux';
 import {categoryUpdate, categoryDelete} from '../../action/category-actions.js';
 import {expenseUpdate, expenseDelete, expenseCreate} from '../../action/expense-actions.js';
 
-//hosts my items obce thet are creating, including the create and delete button
+
 class CategoryItem extends React.Component {
-  constructor(props) {
+  constructor(props){
     super(props);
     this.state = {
-      expenseForm: false,
-      categoryForm: false,
+      editCategory: false,
+      expenseBox: false,
     };
-
-    this.toggleExpense = this.toggleExpense.bind(this);
     this.toggleCategory = this.toggleCategory.bind(this);
-  }
-
-  toggleExpense() {
-    this.setState({expenseForm: !this.state.expenseForm});
+    this.toggleExpense = this.toggleExpense.bind(this);
   }
 
   toggleCategory() {
-    this.setState({categoryForm: !this.state.categoryForm});
+    this.setState({editCategory: !this.state.editCategory});
+  }
+
+  toggleExpense() {
+    this.setState({expenseBox: !this.state.expenseBox});
   }
 
 
+
   render() {
-    return (
-      <div className="category-item">
-        <div className="content-container">
-          <button className="remove" onClick={() => this.props.categoryDelete(this.props.category)}>Delete</button>
-          <button onClick={this.toggleExpense}>New</button>
-          <h3 key={this.props.category.id} onDoubleClick={this.toggleCategory}>{this.props.category.title}: ${this.props.category.budget} budget</h3>
-
-          {this.state.categoryForm ?
+    let {category, categoryUpdate, categoryDelete, expense, expenses} = this.props;
+    return(
+      <section>
+        <div className='list'>
+          <h2>{category.title}</h2>
+          <h3>Budget: {category.budget}</h3>
+          <button onClick={()=>this.props.categoryDelete(this.props.category)}>X</button>
+          <button onClick={this.toggleCategory}>edit category</button>
+          {this.state.editCategory ?
             <CategoryForm
-              buttonText="update"
+              buttonText='Update'
+              category={category}
               onComplete={this.props.categoryUpdate}
-              category={this.props.category}
-              toggle={this.toggleCategory}/> :
-            undefined
-          }
-        </div>
-        <div className="content-container">
-          {this.state.expenseForm ?
-            <ExpenseForm
-              buttonText="create"
-              categoryId={this.props.category.id}
-              onComplete={this.props.expenseCreate}
-              toggle={this.toggleExpense}/> :
-            undefined
-          }
-
-          {this.props.expense[this.props.category.id].length ?
-            this.props.expense[this.props.category.id].map(expense => <ExpenseItem key={expense.id} expense={expense}/>)
+            />
             :
-            <h3>You Currently Have No Expenses</h3>
+            undefined
           }
+          <div className='expense-container'>
+            <ExpenseForm
+              categoryID={category.id}
+              buttonText='Create'
+              onComplete={this.props.expenseCreate}
+            />
+
+            <div className='expense-items'>
+              {this.props.expenses.map(expense =>
+                <p>
+                  <ExpenseItem key={expense.id} expense={expense} category={this.props} />
+                </p>
+              )}
+            </div>
+          </div>
         </div>
-      </div>
+
+      </section>
     );
   }
 }

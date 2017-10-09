@@ -1,54 +1,57 @@
+import './_expense-item.scss';
 import React from 'react';
 import {connect} from 'react-redux';
 import ExpenseForm from '../expense-form';
-import {expenseDelete, expenseUpdate} from '../../action/expense-actions';
+import {expenseUpdate, expenseDelete} from '../../action/expense-actions.js';
 
 class ExpenseItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      expenseEdit: false,
+      editCard: false,
     };
-    this.toggleUpdate = this.toggleUpdate.bind(this);
+    this.toggleExpense = this.toggleExpense.bind(this);
   }
 
-  toggleUpdate(e) {
+  toggleExpense() {
     this.setState({
-      expenseEdit: !this.state.expenseEdit,
+      editExpense: !this.state.editExpense,
     });
   }
-
   render() {
-    console.log(this.props);
-    return(
-      <section className="expense-item" id={this.props.expense.id}>
-        <button className="remove" onClick={() => this.props.expenseDelete(this.props.expense)}>Delete</button>
-        <button onClick={this.toggleUpdate}>Edit</button>
-        <h2>{this.props.expense.name}</h2>
-        <h3>Price: ${this.props.expense.price}</h3>
 
-        {this.state.expenseEdit ?
+
+    return (
+      <div className='expenseItem'>
+
+        <div className='expense-content'>
+          <h3>{this.props.expense.title}</h3><br/>
+          <p>{this.props.expense.price}</p><br/>
+          <button onClick={() => this.props.expenseDelete(this.props.expense)}>X</button>
+          <button onClick={this.toggleExpense}>edit expense</button>
+        </div>
+
+        {this.state.editExpense ? 
           <ExpenseForm
-            buttonText="update"
-            toggle={this.toggleUpdate}
+            id={this.props.expense.id}
+            categoryID={this.props.expense.categoryID}
+            buttonText='Update'
             onComplete={this.props.expenseUpdate}
-            expense={this.props.expense} />
+          />
           :
           undefined
         }
-      </section>
+      </div>
     );
   }
 }
 
 let mapStateToProps = () => ({});
 
-let mapDispatchToProps = (dispatch, getState) => {
-  return {
-    expenseDelete: expense => dispatch(expenseDelete(expense)),
-    expenseUpdate: expense => dispatch(expenseUpdate(expense)),
-  };
-};
 
+let mapDispatchToProps = (dispatch, getState) => ({
+  expenseUpdate: (expense) => dispatch(expenseUpdate(expense)),
+  expenseDelete: (expense) => dispatch(expenseDelete(expense)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExpenseItem);

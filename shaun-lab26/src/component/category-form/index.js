@@ -1,8 +1,6 @@
 import React from 'react';
-import uuid from 'uuid/v4';
 
 
-//hosts my formated category form with handle functions
 class CategoryForm extends React.Component {
   constructor(props) {
     super(props);
@@ -10,8 +8,9 @@ class CategoryForm extends React.Component {
       title: props.category ? props.category.title : '',
       budget: props.category ? props.category.budget : '',
       id: props.category ? props.category.id :null,
-      timestamp: props.category ? props.category.timestamp : null,
+
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -23,32 +22,41 @@ class CategoryForm extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState(
+      {
+        [e.target.name]: e.target.value,
+      });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onComplete(Object.assign({}, this.state));
-    this.setState({
-      title: '',
-      budget: 0,
-    });
+    this.props.onComplete({...this.state});
+
+    if (!this.props.category) {
+      this.setState({ title: '' });
+    }
   }
 
   render() {
     return (
       <form className="category-form" onSubmit={this.handleSubmit}>
+        <h4>{this.props.buttonText} category</h4>
         <input
           type="text"
           name="title"
-          placeholder="enter a budget category"
+          placeholder="enter a title"
           value={this.state.title}
-          onChange={this.handleChange} />
+          onChange={this.handleChange}/><br/>
+
         <input
-          type="number"
-          name="budget"
+          name='budget'
+          type='number'
+          placeholder='cost'
           value={this.state.budget}
-          onChange={this.handleChange} />
+          onChange={this.handleChange}
+        />
+        <br/>
+
         <button type="submit">{this.props.buttonText}</button>
       </form>
     );

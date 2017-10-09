@@ -1,49 +1,65 @@
-import React from 'react';import React from 'react';
+import React from 'react';
+import './_dashboard-container.scss';
 import {connect} from 'react-redux';
-import {categoryCreate} from '../../action/category-actions';
+import {
+  categoryCreate,
+  categoryUpdate,
+  categoryDelete,
+} from '../../action/category-actions';
 import CategoryForm from '../category-form';
 import CategoryItem from '../category-item';
 
 class DashboardContainer extends React.Component {
+
   componentDidMount() {
-    this.props.categoryCreate({title: 'Pizza', budget: 100});
-    this.props.categoryCreate({title: 'Clothing', budget: 200});
-    this.props.categoryCreate({title: 'Toiletries', budget: 20});
+    this.props.categoryCreate({title: 'Motorcycle Jacket', budget: '500'});
+    this.props.categoryCreate({title: 'Motorcycle Boots', budget: '150'});
   }
 
   render() {
     return (
-      <main className="main-content">
-        <h2>Dashboard</h2>
-        <CategoryForm
-          buttonText="create"
-          onComplete={this.props.categoryCreate} />
-        {this.props.categories.length ?
-          <div>
-            <h6>* Double-click category to edit</h6>
-            {this.props.categories.map(item => {
-              return <CategoryItem
+      <main className="dashboard-container">
+        <h1>Budget Tracker</h1>
+        <h2>Monthly Budget: {this.props.totalMonthly}</h2>
+        <h2>Remaining: {this.props.totalRemaining}</h2>
+        <div className='categoryForm'>
+          <CategoryForm
+            buttonText='Create'
+            onComplete={this.props.categoryCreate} />
+        </div>
+        <div className="categoryList">
+          {this.props.categories.map((item) => {
+            return (
+              <CategoryItem
                 key={item.id}
-                category={item} />;
-            })}
-          </div> :
-          <h2>Add some categories</h2>
-        }</main>
+                category={item}
+              />
+            );
+          }
+          )}
+        </div>
+      </main>
+
     );
   }
 }
 
-let mapStateToProps = state => {
+
+
+const mapStateToProps = state => {
   return {
     categories: state.categories,
-    expense: state.expenses,
+    totalMonthly: 2000,
+    // totalRemaining: 2000 - this.state.totalSpent,
   };
 };
 
 const mapDispatchToProps = (dispatch, getState) => {
   return {
     categoryCreate: category => dispatch(categoryCreate(category)),
+    categoryUpdate: category => dispatch(categoryUpdate(category)),
+    categoryDelete: category => dispatch(categoryDelete(category)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);

@@ -12,7 +12,7 @@ const UglifyPlugin = require('uglifyjs-webpack-plugin');
 let plugins = [
   new EnvironmentPlugin(['NODE_ENV']),
   new ExtractPlugin('bundle-[hash].css'),
-  new HtmlPlugin({ template: `${__dirname}/src/index.html`}),
+  new HtmlPlugin({ template: `${__dirname}/src/index.html` }),
   new DefinePlugin({
     __DEBUG__: JSON.stringify(!production),
   }),
@@ -79,7 +79,7 @@ module.exports = {
             options: {
               name: 'audio/[name].[ext]',
             },
-          },
+          }   ,
         ],
       },
     ],

@@ -1,15 +1,16 @@
-export default store => next => action => {
+let reporter = store => next => action => {
   console.log('__ACTION__', action);
 
   try {
     let result = next(action);
-    console.log('__REPORTER_STATE__', store.getState());
-    console.log('__REPORTER_STORE__', store);
-
+    console.log('__STATE__', store.getState());
     return result;
-  } catch(e) {
-    e.action = action;
-    console.error('__ERROR__', e);
-    return e;
+  } catch (error) {
+    error.action = action;
+    console.error('__ERROR__', error);
+    return error;
   }
 };
+
+
+export default reporter;

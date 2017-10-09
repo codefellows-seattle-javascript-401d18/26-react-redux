@@ -1,27 +1,18 @@
-import uuid from 'uuid/v4';
+import uuid from 'uuid/v1';
 
-
-///  //creating the three different actions for expenses
-
-export const expenseCreate = expense => {
-  expense.id = uuid();
-  expense.timestamp = new Date();
+export const expenseCreate = (expense) => {
   return {
     type: 'EXPENSE_CREATE',
-    payload: expense,
+    payload: {...expense, id: uuid(), timestamp: new Date()},
   };
 };
 
-export const expenseUpdate = expense => {
-  return {
-    type: 'EXPENSE_UPDATE',
-    payload: {...expense},
-  };
-};
+export const expenseUpdate = (expense) => ({
+  type: 'EXPENSE_UPDATE',
+  payload: {...expense},
+});
 
-export const expenseDelete = expense => {
-  return {
-    type: 'EXPENSE_DELETE',
-    payload: expense,
-  };
-};
+export const expenseDelete = (expense) => ({
+  type: 'EXPENSE_DELETE',
+  payload: {...expense},
+});

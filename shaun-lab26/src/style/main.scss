@@ -1,55 +1,63 @@
-$primary: #d6ca98;
-$secondary: #fff7d8;
-$black: #222;
-$white: #eee;
-$gutter-sm: 2vw;
-$gutter-lg: $gutter-sm * 2;
-$font-primary: 'helvetica';
-$border-radius: 3px;
-
 body {
-  background: $secondary;
   font-family: $font-primary;
-
-  .application {
-    width: 100%;
-  }
-
-  pre {
-    background: $black;
-    color: $white;
-    padding: $gutter-lg;
-    border-radius: $border-radius;
-
-    code {
-      max-width: 50%;
-      margin: $gutter-sm auto;
-      font-size: 2.5vw;
-    }
-  }
+  background: $secondary;
 }
 
-select {
-  -webkit-appearance: none;
-  text-align-last: center;
-}
-
-button, select, option {
-  width: 100%;
+main {
+  margin-top: 7.5vw;
   padding: $gutter-sm;
-  margin: ($gutter-sm / 2) 0;
-  font-size: 2vw;
+  min-height: 700px;
+}
+
+a {
+  text-decoration: none;
+  color: $black;
+}
+
+button {
+  border: none;
+  color: $white;
+  background: $black;
+  padding: $gutter-sm / 3;
+  margin: ($gutter-sm / 3) 1vw ($gutter-sm / 3) 0;
   border-radius: $border-radius;
-  background: $white;
-  border: 1px solid $black;
-  transition: 350ms;
+  cursor: pointer;
+  font-size: 2vw;
+  transition: $transition-primary;
 
   &:hover {
-    background: $primary;
+    background: $btn-primary;
+  }
+
+  &.remove {
+    background: none;
+    color: red;
+    position: absolute;
+    top: 0;
+    padding: 0;
+    right: 0;
+    font-size: 2.5vw;
   }
 }
 
-.myP {
-  display: inline-block;
-  padding: $gutter-lg;
+input[type="text"] {
+  border-radius: $border-radius;
+  box-sizing: border-box;
+  padding: $gutter-sm;
+  width: 100%;
+  font-size: 2vw;
+  margin-bottom: $gutter-sm;
+  border: none;
+  transition: $transition-primary;
+
+  &:focus {
+    background: #444;
+    color: $white;
+  }
+}
+
+h2 {
+  font-size: 3vw;
+  text-decoration: underline;
+  margin-bottom: $gutter-sm;
 }

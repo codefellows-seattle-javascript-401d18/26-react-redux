@@ -14,15 +14,19 @@ class CategoryForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componenetDidMount() {
+    console.log('__FORM_PROPS__', this.props);
+  }
+
   handleChange(e) {
     this.setState({ title: e.target.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('isaiah was here', this.state);
+    console.log('isaiah was category-form', this.state);
     this.props.onComplete(Object.assign({}, this.state));
-    this.setState({title: ''});
+    this.props.toggle();
   }
 
   render() {

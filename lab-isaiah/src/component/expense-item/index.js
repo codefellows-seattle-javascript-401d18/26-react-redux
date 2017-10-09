@@ -8,38 +8,40 @@ class ExpenseItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: props.expense ? props.expense.title : '',
-      price: props.expense ? props.expense.price : null,
+      editExpense: false,
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleExpense = this.toggleExpense.bind(this);
   }
 
-  handleChange(e) {
-    this.setState({ title: e.target.value });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.onComplete(Object.assign({}, this.state));
+  toggleExpense() {
+    this.setState({ editExpense: !this.state.editExpense });
   }
 
   render() {
     console.log(this);
     return (
-      <div className="expense-item">
+      <div className="expense-item" id={this.props.expense.id}>
       <button className="delete-button" onClick={() => this.props.expenseDelete(this.props.expense)}>x</button>
-      <h4>Expenses</h4>
+      <button onClick={this.toggleExpense}>edit expense</button>
+      <h4>{this.props.expense.title}</h4>
+      <p>{this.props.expense.price}</p>
+
+      {this.state.editExpense ?
       <ExpenseForm
-        buttonText1="update"
+        buttonText="update"
+        toggle={this.toggleExpense}
         onComplete={this.props.expenseUpdate}
-        expense={this.props.expense}
-        />
+        expense={this.props.expense}/>
+      :
+      undefined
+    }
       </div>
     );
   }
 }
+
+let mapStateToProps = () => ({});
 
 let mapDispatchToProps = (dispatch, action) => {
   return {
@@ -48,4 +50,4 @@ let mapDispatchToProps = (dispatch, action) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(ExpenseItem);
+export default connect(mapStateToProps, mapDispatchToProps)(ExpenseItem);

@@ -5,35 +5,28 @@ class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.expense ? props.expense.id : null,
-      timestamp: props.expense ? props.expense.timestamp : null,
+      categoryId: props.expense ? props.expense.categoryId: props.categoryId,
+      id: props.expense ? props.expense.id : undefined,
+      timestamp: props.expense ? props.expense.timestamp : undefined,
       title: props.expense ? props.expense.title : '',
-      categoryId: props.category ? props.category.categoryId: null,
       price: props.expense ? props.expense.price : '',
     };
 
-    this.handleExpenseTitleChange = this.handleExpenseTitleChange.bind(this);
-    this.handleExpensePriceChange = this.handleExpensePriceChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleExpenseTitleChange(e) {
-    this.setState({ title: e.target.value });
-  }
-
-  handleExpensePriceChange(e) {
-    this.setState({ price: e.target.value });
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('isaiah was here', this);
-    this.props.onComplete(Object.assign({}, this.state));
-    this.setState({title: '', price: 0});
+    this.props.onComplete(this.state);
+    this.props.toggle();
   }
 
   render() {
-    console.log('ex-form buttontext1:',this);
     return (
       <form className="expense-form" onSubmit={this.handleSubmit}>
         <input
@@ -43,18 +36,18 @@ class ExpenseForm extends React.Component {
           placeholder="enter expense"
           required
           value={this.state.title}
-          onChange={this.handleExpenseTitleChange}/>
+          onChange={this.handleChange}/>
 
         <input
           className="expForm"
           type="number"
           name="price"
-          placeholder="enter a price"
+          placeholder="enter price"
           required
           value={this.state.price}
-          onChange={this.handleExpensePriceChange}/>
+          onChange={this.handleChange}/>
 
-        <button type="submit">{this.props.buttonText1}</button>
+        <button type="submit">{this.props.buttonText}</button>
       </form>
     );
   }

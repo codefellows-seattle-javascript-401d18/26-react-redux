@@ -1,34 +1,19 @@
 import './_dashboard-container.scss';
 import React from 'react';
 import {connect} from 'react-redux';
-import {
-  categoryCreate,
-  categoryUpdate,
-  categoryDelete,
-} from '../../action/category-actions';
 import CategoryForm from '../category-form';
 import CategoryItem from '../category-item';
-
-import {
-  expenseCreate,
-  expenseUpdate,
-  expenseDelete,
-} from '../../action/expense-actions';
-import ExpenseForm from '../expense-form';
-import ExpenseItem from '../expense-item';
+import {categoryCreate} from '../../action/category-actions';
 
 class DashboardContainer extends React.Component {
   componentDidMount() {
-    console.log('__DASHBOARD__', this.props);
-    // this.props.categoryCreate({title: 'Houston'});
-    // this.props.categoryCreate({title: 'Chicago'});
-    // this.props.categoryCreate({title: 'Seattle'});
-    // this.props.expenseCreate({title: 'popcorn', price: 12});
-    // this.props.expenseCreate({title: 'popcorn', price: 12});
-    // this.props.expenseCreate({title: 'popcorn', price: 12});
+    console.log('__DASHBOARD__', this);
+    this.props.categoryCreate({title: 'Houston'});
+    this.props.categoryCreate({title: 'Chicago'});
+    this.props.categoryCreate({title: 'Seattle'});
   }
+
   render() {
-    console.log(this.props);
     return (
       <main className="main-content">
         <header className="main-header">
@@ -37,10 +22,10 @@ class DashboardContainer extends React.Component {
 
         <CategoryForm
           buttonText="create"
+          toggle={() => {}}
           onComplete={this.props.categoryCreate}/>
 
         {this.props.categories.length ?
-
             <div>
               {this.props.categories.map(item => {
                 return <CategoryItem
@@ -48,9 +33,7 @@ class DashboardContainer extends React.Component {
                           category={item}/>;
               })}
 
-
             </div> :
-
 
               <h3>Add some categories</h3>
 
@@ -63,18 +46,12 @@ class DashboardContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     categories: state.categories,
-    expenses: state.expenses,
   };
 };
 
 const mapDispatchToProps = (dispatch, getState) => {
   return {
     categoryCreate: category => dispatch(categoryCreate(category)),
-    categoryUpdate: category => dispatch(categoryUpdate(category)),
-    categoryDelete: category => dispatch(categoryDelete(category)),
-    expenseCreate: expense => dispatch(expenseCreate(expense)),
-    expenseUpdate: expense => dispatch(expenseUpdate(expense)),
-    expenseDelete: expense => dispatch(expenseDelete(expense)),
   };
 };
 

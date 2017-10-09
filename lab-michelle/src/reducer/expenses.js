@@ -1,32 +1,47 @@
-//NEED TO: trace the refs here//
-// require('babel-core').transform('code', {
-//   plugins: ['transform-object-rest-spread'],
-// });
+let expenseValidate = expense => {
+  let {id, categoryId, title, content, timestamp} = expense;
+  if(!id || !categoryId || !title || !content || !timestamp) {
+    throw new Error('Validation failed, your expense must contain an id, categoryId, title, etc');
+  }
+};
+
 let initialState = {};
 
 export default (state = initialState, action) => {
   let {payload, type} = action;
-  let categoryId;
-  let categoryExpenses;
+  // let categoryId;
+  // let categoryExpenses;
+  // let updateState;
 
   switch(type){
     //for some reason it hates rest and spread?? Hrmmmm//
   case 'CATEGORY_CREATE': return {...state, [payload.id]: []};
+
   case 'CATEGORY_DELETE': return {...state, [payload.id]: null};
-  case 'EXPENSE_CREATE':
-    categoryId = payload.categoryId;
-    categoryExpenses = state[categoryId];
-    return {...state, [categoryId]: [...categoryExpenses, payload]};
-  case 'EXPENSE_DELETE':
-    return;
-  case 'EXPENSE_UPDATE':
+
+  case 'EXPENSE_CREATE': {
+    expenseValidate(payload);
+    let categoryExpense = state[payload.categoryId];
+    return {...state, [payload.categoryId]: [...categoryExpense, payload]};
+  }
+
+  case 'EXPENSE_UPDATE': {
+    expenseValidate(payload);
     let updateState = state;
-    categoryId = payload.categoryId;
-    updateState[categoryId] = updateState[categoryId].map(expense => {
+    updateState[payload.categoryId] = updateState[payload.categoryId].map(expense => {
       if(expense.id === payload.id) expense = payload;
       return expense;
     });
     return {...updateState};
+  }
+
+  case 'EXPENSE_DELETE': {
+    expenseValidate(payload);
+    let deleteState = state;
+    deleteState[payload.categoryId] = deleteState[payload.categoryId].filter(card => card.id !== payload.id);
+    return {...deleteState};
+  }
+
   default:
     return state;
   }

@@ -33,23 +33,45 @@ class CategoryItem extends React.Component {
     return (
       <div className = "category-item">
         <div className= "content-container">
-          <button onClick={() => this.props.categoryDestroy(this.props.category)}>X</button>
-          //Adding the toggle since I didn't do that in 27 previously...
-          <button onClick={this.toggleCard}>new expense</button>
+          <button className = "remove" onClick={() => this.props.categoryDestroy(this.props.category)}>X</button>
+          <button onClick={this.toggleCategory}>edit category</button>
+          <button onClick={this.toggleExpense}>new expense</button>
           <h3>{this.props.category.title}</h3>
 
+    {this.state.categoryForm ?
       <CategoryForm
         buttonText="update"
         onComplete = {this.props.categoryUpdate}
-        category = {this.props.category}/>
-      </div>
+        category = {this.props.category}
+        toggle = {this.toggleCategory}
+      /> :
+      undefined
+    }
+  </div>
+  <div className="content-container">
+    {this.state.expenseForm ?
+      <ExpenseForm
+        buttonText="log your expense"
+        categoryId = {this.props.category.id}
+        onComplete = {this.props.expenseCreate}
+        toggle={this.toggleExpense}/> :
+        undefined
+    }
+
+    {this.props.expenses[this.props.category.id].length?
+      this.props.expenses[this.props.category.id].map(expense => <ExpenseItem key={expense.id} expense={expense}/>)
+    :
+    <h3>No expenses, you must be rich!</h3>
+    }
+    </div>
+  </div>
     );
   }
 }
 
 let mapStateToProps = state => {
   return {
-    categories: state,
+    expenses: state.expenses,
   };
 };
 
@@ -57,6 +79,7 @@ let mapDispatchToProps = (dispatch, getState) => {
   return {
     categoryUpdate: category => dispatch(categoryUpdate(category)),
     categoryDestroy: category => dispatch(categoryDestroy(category)),
+    expenseCreate: expense => dispatch(expenseCreate(expense)),
   };
 };
 

@@ -39,30 +39,30 @@ class CategoryItem extends React.Component {
           onComplete={this.props.categoryUpdate}
           category={this.props.category}/>
 
-          {this.state.expenses ?
-            <div>
-            <button className="delete-button" onClick={() => this.props.expenseDelete(this.props.expense)}>x</button>
-            <ExpenseForm
-              buttonText1="update"
-              onComplete={this.props.expenseUpdate}
-              expense={this.props.expense}/>
-
-              </div> :
-
-                <h3>Add some expenses</h3>
-
-          }
-
-        <ExpenseForm
-          buttonText1="update"
-          onComplete={this.props.expenseUpdate}
+          <div>
+          <button className="delete-button" onClick={() => this.props.expenseDelete(this.props.expense)}>x</button>
+          <ExpenseForm
+          buttonText1="create"
+          onComplete={this.props.expenseCreate}
           expense={this.props.expense}/>
-      </div>
+
+          </div>
+          </div>
+          // {this.props.expenses.length ?
+          //
+          //       <h3>Add some expenses</h3>
+          //
+          //   }
+
     );
   }
 }
 
-let mapStateToProps = () => ({});
+let mapStateToProps = (state) => {
+  return {
+    expenses: state.expenses,
+  };
+};
 
 let mapDispatchToProps = (dispatch, action) => {
   return {

@@ -20,12 +20,12 @@ import ExpenseItem from '../expense-item';
 class DashboardContainer extends React.Component {
   componentDidMount() {
     console.log('__DASHBOARD__', this.props);
-    this.props.categoryCreate({title: 'Star Wars'});
-    this.props.categoryCreate({title: 'Dune'});
-    this.props.categoryCreate({title: 'Star Trek'});
-    this.props.expenseCreate({title: 'popcorn', price: 12});
-    this.props.expenseCreate({title: 'popcorn', price: 12});
-    this.props.expenseCreate({title: 'popcorn', price: 12});
+    // this.props.categoryCreate({title: 'Houston'});
+    // this.props.categoryCreate({title: 'Chicago'});
+    // this.props.categoryCreate({title: 'Seattle'});
+    // this.props.expenseCreate({title: 'popcorn', price: 12});
+    // this.props.expenseCreate({title: 'popcorn', price: 12});
+    // this.props.expenseCreate({title: 'popcorn', price: 12});
   }
   render() {
     console.log(this.props);
@@ -48,6 +48,7 @@ class DashboardContainer extends React.Component {
                           category={item}/>;
               })}
 
+
             </div> :
 
 
@@ -61,8 +62,8 @@ class DashboardContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    categories: state,
-    expenses: state,
+    categories: state.categories,
+    expenses: state.expenses,
   };
 };
 

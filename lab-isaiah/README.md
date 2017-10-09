@@ -1,11 +1,11 @@
-![cf](https://i.imgur.com/7v5ASc8.png) 27: Combining Reducers
+![cf](https://i.imgur.com/7v5ASc8.png) Lab 28
 ======
 
-# Lab27-Isaiah
+# Lab28-Isaiah
 
 ### Completed Following Featured Tasks:
 
-Work in progress
+End results of lab 26-27-28.
 
 ### Documentation:
 This lab to provide a better understanding of how react and redux operate together.

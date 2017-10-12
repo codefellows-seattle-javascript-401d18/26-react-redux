@@ -9,6 +9,14 @@ import {
 import CategoryForm from '../category-form';
 import CategoryItem from '../category-item';
 
+import {
+  expenseCreate,
+  expenseUpdate,
+  expenseDelete,
+} from '../../action/expense-actions';
+import ExpenseForm from '../expense-form';
+import ExpenseItem from '../expense-item';
+
 class DashboardContainer extends React.Component {
   componentDidMount() {
     console.log('__DASHBOARD__', this);

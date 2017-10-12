@@ -4,6 +4,10 @@ import {connect} from 'react-redux';
 import CategoryForm from '../category-form';
 import {categoryUpdate, categoryDelete} from '../../action/category-actions';
 
+import ExpenseForm from '../expense-form';
+import ExpenseItem from '../expense-item';
+import {expenseUpdate, expenseDelete} from '../../action/expense-actions';
+
 class CategoryItem extends React.Component {
   constructor(props) {
     super(props);
@@ -33,6 +37,12 @@ class CategoryItem extends React.Component {
           buttonText="update"
           onComplete={this.props.categoryUpdate}
           category={this.props.category}/>
+        <h4>Expenses</h4>
+        <ExpenseForm
+          buttonText="update"
+          // onComplete={}
+          // expense={}
+          />
       </div>
     );
   }

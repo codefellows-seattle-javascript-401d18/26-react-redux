@@ -1,13 +1,15 @@
-import './_category-form.scss';
+import './_expense-form.scss';
 import React from 'react';
 
-class CategoryForm extends React.Component {
+class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: props.category ? props.category.title : '',
-      id: props.category ? props.category.id : null,
-      timestamp: props.category ? props.category.timestamp : null,
+      id: props.expense ? props.expense.id : null,
+      timestamp: props.expense ? props.expense.timestamp : null,
+      title: props.expense ? props.expense.title : '',
+      categoryId: props.expense ? props.expense.categoryId: null,
+      price: props.expense ? props.expense.price : '$' + Number,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -27,12 +29,12 @@ class CategoryForm extends React.Component {
 
   render() {
     return (
-      <form className="category-form" onSubmit={this.handleSubmit}>
+      <form className="expense-form" onSubmit={this.handleSubmit}>
         <input
           className="cateForm"
           type="text"
           name="title"
-          placeholder="enter a category"
+          placeholder="enter an expense"
           required
           value={this.state.title}
           onChange={this.handleChange}/>
@@ -43,4 +45,4 @@ class CategoryForm extends React.Component {
   }
 }
 
-export default CategoryForm;
+export default ExpenseForm;

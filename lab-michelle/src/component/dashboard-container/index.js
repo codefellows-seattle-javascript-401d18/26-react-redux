@@ -31,12 +31,12 @@ class DashboardContainer extends React.Component {
                 key={item.id}
                 category = {item}/>;
               })}
-              //and give you the option for expenses?
+              
             </div> :
             <h2>Add some categories</h2>
       }
     );
-    //some kind of if here to check if a category has been created before we display these?
+
       <ExpenseForm
         buttonText = "create"
           onComplete = {this.props.expenseCreate}/>

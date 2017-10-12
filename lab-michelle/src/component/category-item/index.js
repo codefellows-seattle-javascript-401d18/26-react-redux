@@ -34,8 +34,7 @@ class CategoryItem extends React.Component {
       <div className = "category-item">
         <div className= "content-container">
           <button onClick={() => this.props.categoryDestroy(this.props.category)}>X</button>
-          //Adding the toggle since I didn't do that in 27 previously...
-          <button onClick={this.toggleCard}>new expense</button>
+          <button onClick={this.toggleExpense}>new expense</button>
           <h3>{this.props.category.title}</h3>
 
       <CategoryForm

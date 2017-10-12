@@ -8,11 +8,11 @@ class ExpenseForm extends React.Component {
       //state of our expense
       categoryId: props.expense ? props.expense.categoryId : props.categoryId,
       id: props.expense ? props.expense.id : undefined,
-      timestamp: props.card ? props.card.timestamp : undefined,
+      timestamp: props.expense ? props.expense.timestamp : undefined,
       title: props.expense ? props.expense.title: '',
       price: props.expense ? props.expense.price: 0,
     };
-    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 

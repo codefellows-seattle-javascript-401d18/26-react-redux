@@ -1,4 +1,5 @@
 //Where we export the actions//
+//Seems like maybe we should modularize for the expense functions but I'm gonna keep it in one for now//
 
 import uuid from 'uuid/v4';
 

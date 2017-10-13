@@ -1,5 +1,6 @@
 //Check the refs to expense in here//
 import React from 'react';
+import {expenseUpdate} from '../../action/expense-actions';
 
 class ExpenseForm extends React.Component {
   constructor(props) {
@@ -28,18 +29,21 @@ class ExpenseForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onComplete(this.state);
-    this.props.toggle();
+    this.props.onComplete(expenseUpdate);
+    // this.props.toggle();
   }
 
   render() {
     return (
-      <form className = "expense-form" onSubmit= {this.handleSubmit}>
+      <form
+        className = "expense-form"
+        onSubmit= {this.handleSubmit}>
+
         <input
           required
-          name = 'cost'
-          type="number"
-          price= "0"
+          name ="price"
+          type= "number"
+          price= ""
           placeholder = "0"
           value = {this.state.price}
           onChange = {this.handleChange}/>

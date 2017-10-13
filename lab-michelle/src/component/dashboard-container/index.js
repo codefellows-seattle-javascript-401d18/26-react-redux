@@ -31,30 +31,33 @@ class DashboardContainer extends React.Component {
                 key={item.id}
                 category = {item}/>;
               })}
-              
+
             </div> :
             <h2>Add some categories</h2>
       }
-    );
-
-      <ExpenseForm
-        buttonText = "create"
-          onComplete = {this.props.expenseCreate}/>
-
-            {this.props.expenses.length ?
-              <div>
-                {this.props.expenses.map(expense => {return <ExpenseItem
-                  key={expense.id}
-                  name = {expense.name}
-                  price = {expense.price}/>;
-                })}
-              </div> :
-              <h2>Add some expenses</h2>
-          }
-        </main>
-    );
+      </main>
+    );}
   }
-}
+    // );
+
+      // <ExpenseForm
+      //   buttonText = "create"
+      //     onComplete = {this.props.expenseCreate}/>
+      //
+      //       {this.props.expenses.length ?
+      //         <div>
+      //           {this.props.expenses.map(expense => {return <ExpenseItem
+      //             key={expense.id}
+      //             name = {expense.name}
+      //             price = {expense.price}/>;
+      //           })}
+      //         </div> :
+      //         <h2>Add some expenses</h2>
+      //     }
+//         </main>
+//     );
+//   }
+// }
 
 const mapStateToProps = state => {
   return {

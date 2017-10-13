@@ -38,6 +38,7 @@ class ExpenseItem extends React.Component {
   }
 }
 
+
 let mapStateToProps = () => ({});
 
 let mapDispatchToProps = (dispatch, getState) => {

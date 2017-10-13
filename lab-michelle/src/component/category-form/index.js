@@ -7,23 +7,24 @@ class CategoryForm extends React.Component {
       title: props.category ? props.category.title : '',
       id: props.category ? props.category.id : null,
       timestamp: props.category ? props.category.timestamp: null,
+      budget: props.category ? props.category.budget: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    console.log('__FORM_PROPS__', this.props);
-  }
+  // componentDidMount() {
+  //   console.log('__FORM_PROPS__', this.props);
+  // }
 
   handleChange(e) {
-    this.setState({title: e.target.value});
+    this.setState({[e.target.name]: e.target.value});
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.onComplete(Object.assign({}, this.state));
-    this.props.toggle();
+    // this.props.toggle();
   }
 
   render() {
@@ -33,9 +34,16 @@ class CategoryForm extends React.Component {
           required
           type ="text"
           name="title"
-          placeholder="enter a title"
+          placeholder="enter a category for your expenses"
           value={this.state.title}
           onChange={this.handleChange}/>
+
+        <input
+          name='budget'
+          type='number'
+          placeholder='budget'
+          onChange = {this.handleChange}
+          value={this.state.budget}/>
 
           <button type ="submit">{this.props.buttonText}</button>
         </form>
@@ -44,10 +52,3 @@ class CategoryForm extends React.Component {
 }
 
 export default CategoryForm;
-
-
-
-// should expect an onComplete prop to be a function
-// that function should be invoked with the CategoryForm's state when the form is submitted
-// should expect a buttonText prop to configure the submit button text
-// should support an optional category prop that will initialize the state of the form

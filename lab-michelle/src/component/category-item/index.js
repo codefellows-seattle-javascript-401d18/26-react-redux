@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import ExpenseItem from '../expense-item';
 import ExpenseForm from '../expense-form';
 import CategoryForm from '../category-form';
-import {expenseCreate} from '../../action/expense-actions';
+import {expenseCreate, expenseUpdate, expenseDelete} from '../../action/expense-actions';
 import {categoryUpdate, categoryDestroy} from '../../action/category-actions';
 
 class CategoryItem extends React.Component {
@@ -33,19 +33,43 @@ class CategoryItem extends React.Component {
     return (
       <div className = "category-item">
         <div className= "content-container">
-          <button onClick={() => this.props.categoryDestroy(this.props.category)}>X</button>
-          <button onClick={this.toggleExpense}>new expense</button>
-          <h3>{this.props.category.title}</h3>
+          <h2>{this.props.category.title}</h2>
+          <button onClick={()=> this.props.categoryDelete(this.props.category)}>X</button>
+          <button onClick={this.toggleCategory}>edit category</button>
 
-      <CategoryForm
-        buttonText="update"
-        onComplete = {this.props.categoryUpdate}
-        category = {this.props.category}/>
+          {this.state.editCategory ?
+            <CategoryForm
+              buttonText='update'
+              category={this.props.category}
+              onComplete={this.props.categoryUpdate}/>
+              :
+              undefined
+          }
+
+        <div className = 'expense-container'>
+          <ExpenseForm
+            categoryId={this.props.category.id}
+            buttonText='create an expense!!'
+            onComplete={this.props.expenseCreate}/>
+
+            </div>
+        </div>
       </div>
-    </div>
     );
   }
 }
+    //       <button onClick={() => this.props.categoryDestroy(this.props.category)}>X</button>
+    //       <button onClick={this.toggleExpense}>new expense</button>
+    //       <h3>{this.props.category.title}</h3>
+    //
+    //   <CategoryForm
+    //     buttonText="update"
+    //     onComplete = {this.props.categoryUpdate}
+    //     category = {this.props.category}/>
+    //   </div>
+    // </div>
+
+
 
 let mapStateToProps = state => {
   return {

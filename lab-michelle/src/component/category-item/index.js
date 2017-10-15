@@ -34,7 +34,7 @@ class CategoryItem extends React.Component {
       <div className = "category-item">
         <div className= "content-container">
           <h2>{this.props.category.title}</h2>
-          <button className="remove" onClick={()=> this.props.categoryDelete(this.props.category)}>X</button>
+          <button className="remove" onClick={()=> this.props.categoryDestroy(this.props.category)}>X</button>
           <button onClick={this.toggleCategory}>edit category</button>
           <button onClick={this.toggleExpense}> new expense </button>
 
@@ -60,7 +60,7 @@ class CategoryItem extends React.Component {
           }
 
           {this.props.expenses[this.props.category.id].length ?
-            this.props.expense[this.props.category.id].map(expense => <ExpenseItem key={expense.id} expense={expense}/>)
+            this.props.expenses[this.props.category.id].map(expense => <ExpenseItem key={expense.id} expense={expense}/>)
             :
             <h2> No expenses </h2>
           }

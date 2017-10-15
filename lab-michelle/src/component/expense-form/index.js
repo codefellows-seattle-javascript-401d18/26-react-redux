@@ -30,7 +30,7 @@ class ExpenseForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.onComplete(expenseUpdate);
-    // this.props.toggle();
+    this.props.toggle();
   }
 
   render() {

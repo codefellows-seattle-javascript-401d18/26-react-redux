@@ -16,10 +16,12 @@ class DashboardContainer extends React.Component {
 
         <CategoryForm
           buttonText = "create"
+
           toggle= {() => {}}
           onComplete = {this.props.categoryCreate}/>
 
         <div className="category-container">
+
           {this.props.categories.length ?
             <div>
               {this.props.categories.map(item => {return <CategoryItem
@@ -31,6 +33,7 @@ class DashboardContainer extends React.Component {
             <h2>Add some categories</h2>
       }
       </div>
+
       </main>
     );
   }

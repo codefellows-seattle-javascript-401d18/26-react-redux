@@ -7,7 +7,9 @@ class ExpenseForm extends React.Component {
       categoryId: props.expense ? props.expense.categoryId : props.categoryId,
       id: props.expense ? props.expense.id : undefined,
       timestamp: props.expense ? props.expense.timestamp : undefined,
+
       name: props.expense ? props.expense.name: '',
+
       price: props.expense ? props.expense.price: 0,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -38,11 +40,10 @@ class ExpenseForm extends React.Component {
           type= "number"
           price= ""
           placeholder = "0"
-          value = {this.state.price}
+          price = {this.state.price}
           onChange = {this.handleChange}/>
 
         <input
-          required
           type="text"
           name="name"
           placeholder="enter an expense"

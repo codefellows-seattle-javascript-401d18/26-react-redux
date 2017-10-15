@@ -1,7 +1,3 @@
-//NEED TO: trace the refs here//
-// require('babel-core').transform('code', {
-//   plugins: ['transform-object-rest-spread'],
-// });
 let initialState = {};
 
 export default (state = initialState, action) => {
@@ -17,7 +13,10 @@ export default (state = initialState, action) => {
     categoryId = payload.categoryId;
     categoryExpenses = state[categoryId];
     return {...state, [categoryId]: [...categoryExpenses, payload]}; }
-  case 'EXPENSE_DELETE':  {return;}
+  case 'EXPENSE_DELETE':  {
+    let deleteState = state;
+    deleteState[payload.categoryId] = deleteState[payload.categoryId].filter(expense => expense.id !==payload.id);
+    return {...deleteState};}
   case 'EXPENSE_UPDATE': {
     let updateState = state;
     categoryId = payload.categoryId;

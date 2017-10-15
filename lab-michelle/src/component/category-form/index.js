@@ -12,18 +12,18 @@ class CategoryForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // componentDidMount() {
-  //   console.log('__FORM_PROPS__', this.props);
-  // }
+  componentDidMount() {
+    console.log('__FORM_PROPS__', this.props);
+  }
 
   handleChange(e) {
-    this.setState({[e.target.name]: e.target.value});
+    this.setState({title: e.target.value});
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.onComplete(Object.assign({}, this.state));
-    // this.props.toggle();
+    this.props.toggle();
   }
 
   render() {

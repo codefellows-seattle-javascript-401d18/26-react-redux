@@ -1,6 +1,8 @@
 import uuid from 'uuid/v4';
 
 export const expenseCreate = expense => {
+  expense.id = uuid();
+  expense.timestamp = new Date();
   return {
     type: 'EXPENSE_CREATE',
     payload: expense,

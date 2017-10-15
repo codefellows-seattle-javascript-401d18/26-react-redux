@@ -19,7 +19,7 @@ class ExpenseItem extends React.Component {
   render() {
     return (
       <div className = "expense-item" id={this.props.expense.id}>
-        <button className="delete" onClick = {() => this.props.expenseDelete(this.props.expense)}>Delete</button>
+        <button className="remove" onClick = {() => this.props.expenseDelete(this.props.expense)}>Delete</button>
         <button onClick={this.toggleExpense}>edit expense</button>
         <h3>{this.props.expense.name}</h3>
         <p>{this.props.expense.price}</p>

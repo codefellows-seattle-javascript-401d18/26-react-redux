@@ -1,24 +1,18 @@
-//Check the refs to expense in here//
 import React from 'react';
-import {expenseUpdate} from '../../action/expense-actions';
+// import {expenseUpdate} from '../../action/expense-actions';
 
 class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      //state of our expense
+      name: props.expense ? props.expense.name: '',
+      price: props.expense ? props.expense.price: 0,
       categoryId: props.expense ? props.expense.categoryId : props.categoryId,
       id: props.expense ? props.expense.id : undefined,
       timestamp: props.expense ? props.expense.timestamp : undefined,
-      title: props.expense ? props.expense.title: '',
-      price: props.expense ? props.expense.price: 0,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentWillReceiveProps() {
-    console.log('__EXPENSE_PROPS__', this.props);
   }
 
   handleChange(e) {
@@ -29,8 +23,7 @@ class ExpenseForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onComplete(expenseUpdate);
-    this.props.toggle();
+    this.props.onComplete(this.state);
   }
 
   render() {
@@ -51,7 +44,7 @@ class ExpenseForm extends React.Component {
         <input
           required
           type="text"
-          name="expense"
+          name="name"
           placeholder="enter an expense"
           value={this.state.name}
           onChange = {this.handleChange}/>

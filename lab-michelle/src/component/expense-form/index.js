@@ -1,15 +1,14 @@
 import React from 'react';
-// import {expenseUpdate} from '../../action/expense-actions';
 
 class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: props.expense ? props.expense.name: '',
-      price: props.expense ? props.expense.price: 0,
       categoryId: props.expense ? props.expense.categoryId : props.categoryId,
       id: props.expense ? props.expense.id : undefined,
       timestamp: props.expense ? props.expense.timestamp : undefined,
+      name: props.expense ? props.expense.name: '',
+      price: props.expense ? props.expense.price: 0,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,6 +23,7 @@ class ExpenseForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.onComplete(this.state);
+    this.props.toggle();
   }
 
   render() {
@@ -56,9 +56,3 @@ class ExpenseForm extends React.Component {
 }
 
 export default ExpenseForm;
-
-// ExpenseItem Component
-//
-// should have a button that will delete the expense from the appState onClick
-// should display the name and price of the component
-// should display an ExpenseForm that will enable the user to update the expense in the app state

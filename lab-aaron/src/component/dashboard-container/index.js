@@ -30,8 +30,7 @@ class DashBoardContainer extends React.Component {
             return (
               <CategoryItem
                 key={item.id}
-                category={item}
-              />
+                category={item} />
             );
           })}
         </div>

@@ -51,7 +51,7 @@ class CategoryItem extends React.Component {
             />
 
             <div className='expense-items'>
-              {this.props.expenses.map(expense =>
+              {this.props.expense.map(expense =>
                 <p>
                   <ExpenseItem key={expense.id} expense={expense} category={this.props} />
                 </p>
@@ -64,13 +64,13 @@ class CategoryItem extends React.Component {
   }
 }
 
-let mapStateToProps = (state, props) => {
+const mapStateToProps = (state, props) => {
   return {
-    expenses: state.expenses[props.category.id],
+    expense: state.expense[props.category.id],
   };
 };
 
-let mapDispatchToProps = (dispatch, getState) => {
+const mapDispatchToProps = (dispatch, getState) => {
   return {
     categoryUpdate: (category) => dispatch(categoryUpdate(category)),
     categoryDelete: (category) => dispatch(categoryDelete(category)),

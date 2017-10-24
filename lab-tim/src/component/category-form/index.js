@@ -1,3 +1,5 @@
+import './_category-form.scss';
+
 import React from 'react';
 
 class CategoryForm extends React.Component {
@@ -5,10 +7,10 @@ class CategoryForm extends React.Component {
     super(props);
     this.state = {
       title: props.category ? props.category.title : '',
-      id: props.category ? props.category.id : '',
-      name: props.category ? props.category.name : '',
+      id: props.category ? props.category.id : null,
       budget: props.category ? props.category.budget : '',
       timestamp: props.category ? props.category.timestamp : '',
+      //name: props.category ? props.category.name : '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -21,13 +23,15 @@ class CategoryForm extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({ title: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.onComplete(Object.assign({}, this.state));
-    this.setState({title: ''});   //this line clears out the submit box on submit click
+    if (!this.props.category) {
+      this.setState({title: ''});   //this line clears out the submit box on submit click
+    }
   }
 
   render() {
@@ -39,6 +43,13 @@ class CategoryForm extends React.Component {
           name="title"
           placeholder="enter a category"
           value={this.state.title}
+          onChange={this.handleChange}/>
+        <input
+          required
+          type="number"
+          name="budget"
+          placeholder="budget"
+          value={this.state.budget}
           onChange={this.handleChange}/>
         <button type="submit">{this.props.buttonText}</button>
       </form>

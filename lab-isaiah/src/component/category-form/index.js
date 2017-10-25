@@ -32,7 +32,7 @@ class CategoryForm extends React.Component {
           className="cateForm"
           type="text"
           name="title"
-          placeholder="enter a category"
+          placeholder="enter a city"
           required
           value={this.state.title}
           onChange={this.handleChange}/>

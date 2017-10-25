@@ -24,7 +24,7 @@ if(production) {
 
 module.exports = {
   plugins,
-  devtool: production ? undefined : 'source-map',
+  devtool: 'source-map',
   devServer: {
     historyApiFallback: true,
   },

@@ -29,24 +29,40 @@ class CategoryItem extends React.Component {
   }
 
   render() {
+    console.log('catitem', this);
     return (
       <div className="category-item">
-        <button id="delete-button" onClick={() => this.props.categoryDelete(this.props.category)}>x</button>
+        <button className="delete-button" onClick={() => this.props.categoryDelete(this.props.category)}>x</button>
         <h3>{this.props.category.title}</h3>
         <CategoryForm
           buttonText="update"
           onComplete={this.props.categoryUpdate}
           category={this.props.category}/>
-        <h4>Expenses</h4>
-        <ExpenseForm
-          buttonText="update"
-          // onComplete={}
-          // expense={}
-          />
-      </div>
+
+          <div>
+          <button className="delete-button" onClick={() => this.props.expenseDelete(this.props.expense)}>x</button>
+          <ExpenseForm
+          buttonText1="create"
+          onComplete={this.props.expenseCreate}
+          expense={this.props.expense}/>
+
+          </div>
+          </div>
+          // {this.props.expenses.length ?
+          //
+          //       <h3>Add some expenses</h3>
+          //
+          //   }
+
     );
   }
 }
+
+let mapStateToProps = (state) => {
+  return {
+    expenses: state.expenses,
+  };
+};
 
 let mapDispatchToProps = (dispatch, action) => {
   return {
@@ -55,4 +71,4 @@ let mapDispatchToProps = (dispatch, action) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(CategoryItem);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem);

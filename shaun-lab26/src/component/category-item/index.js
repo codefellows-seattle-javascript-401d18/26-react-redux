@@ -1,5 +1,4 @@
-
-import './category-item.scss';
+import './_category-item.scss';
 import React from 'react';
 import CategoryForm from '../category-form';
 import ExpenseForm from '../expense-form';
@@ -10,38 +9,60 @@ import {expenseUpdate, expenseDelete, expenseCreate} from '../../action/expense-
 
 
 class CategoryItem extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      editCategory: false,
+      expenseBox: false,
+    };
+    this.toggleCategory = this.toggleCategory.bind(this);
+    this.toggleExpense = this.toggleExpense.bind(this);
+  }
 
+  toggleCategory() {
+    this.setState({editCategory: !this.state.editCategory});
+  }
+
+  toggleExpense() {
+    this.setState({expenseBox: !this.state.expenseBox});
+  }
 
 
 
   render() {
-    let {category, categoryUpdate, categoryDelete, expenseCreate, expense, expenses} = this.props;
+    let {category, categoryUpdate, categoryDelete, expense, expenses} = this.props;
     return(
       <section>
-        <li className='list'>
+        <div className='list'>
           <h2>{category.title}</h2>
           <h3>Budget: {category.budget}</h3>
-          <CategoryForm
-            buttonText='Update'
-            category={category}
-            onComplete={categoryUpdate}
-          />
-          <button className='deleteButton' onClick={()=>this.props.categoryDelete(this.props.category)}>X</button>
+          <button onClick={()=>this.props.categoryDelete(this.props.category)}>X</button>
+          <button onClick={this.toggleCategory}>edit category</button>
+          {this.state.editCategory ?
+            <CategoryForm
+              buttonText='Update'
+              category={category}
+              onComplete={this.props.categoryUpdate}
+            />
+            :
+            undefined
+          }
           <div className='expense-container'>
             <ExpenseForm
               categoryID={category.id}
-              buttonText='create expense'
-              onComplete={expenseCreate}
+              buttonText='Create'
+              onComplete={this.props.expenseCreate}
             />
 
-            <ul className='expense-items'>
-            console.log(expenses, 'expenses');
-              {expenses.map(expense =>
-                <ExpenseItem key={expense.id} expense={expense} category={this.props} />
+            <div className='expense-items'>
+              {this.props.expenses.map(expense =>
+                <p>
+                  <ExpenseItem key={expense.id} expense={expense} category={this.props} />
+                </p>
               )}
-            </ul>
+            </div>
           </div>
-        </li>
+        </div>
 
       </section>
     );

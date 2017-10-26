@@ -12,16 +12,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    store.subscribe(() => {
-      console.log('__STATE__', store.getState());
-    });
-
     store.dispatch({ type: null });
   }
 
+
   render() {
-    return(
-      <section className="budget-tracker">
+    return (
+      <section className="budget">
         <Provider store={store}>
           <BrowserRouter>
             <section>

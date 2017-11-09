@@ -7,11 +7,11 @@ class CategoryForm extends React.Component {
     this.state = {
       title: props.category ? props.category.title : '',
       budget: props.category ? props.category.budget : '',
-      id: props.category ? props.category.id : null,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handlePriceChange = this.handlePriceChange.bind(this);
   }
 
   componentDidMount() {
@@ -20,8 +20,13 @@ class CategoryForm extends React.Component {
 
   handleChange(e) {
     this.setState({ title: e.target.value});
+    console.log('__STATE__', this.state);
   }
 
+  handlePriceChange(e) {
+    this.setState({ budget: e.target.value});
+
+  }
   handleSubmit(e) {
     e.preventDefault();
     this.props.onComplete(Object.assign({}, this.state));
@@ -32,10 +37,9 @@ class CategoryForm extends React.Component {
       <form className="category-form" onSubmit={this.handleSubmit}>
         <h4>{this.props.buttonText} category</h4>
         <input
-          required
           type="text"
-          name="name"
-          placeholder="Expense Category"
+          name="title"
+          placeholder="title"
           value={this.state.title}
           onChange={this.handleChange}/><br/>
 
@@ -44,7 +48,7 @@ class CategoryForm extends React.Component {
           type='number'
           placeholder='cost'
           value={this.state.budget}
-          onChange={this.handleChange}/><br/>
+          onChange={this.handlePriceChange}/><br/>
 
         <button type="submit">{this.props.buttonText}</button>
       </form>

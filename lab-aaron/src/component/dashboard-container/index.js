@@ -9,7 +9,9 @@ import CategoryForm from '../category-form';
 import CategoryItem from '../category-item';
 
 class DashBoardContainer extends React.Component {
-
+  constructor(props) {
+    super(props);
+  }
   componentDidMount() {
     this.props.categoryCreate({title: 'Mortgage/Rent', budget: '1500'});
   }
@@ -19,10 +21,10 @@ class DashBoardContainer extends React.Component {
       <main className="dashboard-container">
         <h1>Expense Tracker</h1>
         <h2>Total Budget: {this.props.totalMonthly}</h2>
-        <h2>Remaining Budget: {this.props.totalRemaining}</h2>
+        <h2>Remaining Budget: {this.props.poop}</h2>
         <div className='category-form'>
           <CategoryForm
-            buttontext="create"
+            buttonText="create"
             onComplete={this.props.categoryCreate} />
         </div>
         <div className='category-list'>

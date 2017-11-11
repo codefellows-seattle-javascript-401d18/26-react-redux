@@ -1,46 +1,43 @@
-
 import React from 'react';
-import {connect} from 'react-redux';
 import CategoryForm from '../category-form';
+import ExpenseForm from '../expense-form';
+import ExpenseItem from '../expense-item';
+import {connect} from 'react-redux';
 import {categoryUpdate, categoryDelete} from '../../action/category-actions';
-
-
+import {expenseUpdate, expenseDelete, expenseCreate} from '../../action/expense-actions';
 
 class CategoryItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+
   render() {
-    return (
-      <div className="category-item">
-        <button onClick={() =>
-        this.props.categoryDelete(this.props.category)}>delete</button>
-        <h3>{this.props.category.title}</h3>
-        <h3>budget: {this.props.category.budget}</h3>
-        <CategoryForm
-          buttonText='update expense'
-          category={this.props.category}
-          onComplete={this.props.categoryUpdate}
-          category={this.props.category}/>
-        </div>
+    let {category, categoryUpdate, categoryDelete, expense, expenses} = this.props;
+    return(
+      <section>
+        <li className='list'>
+        <h3>Expense: {this.props.category.title}<br/>Cost: ${this.props.category.budget}</h3>
+          <CategoryForm
+            buttonText='Update'
+            category={category}
+            onComplete={this.props.categoryUpdate}
+          />
+          <button className='deleteButton' onClick={()=>this.props.categoryDelete(this.props.category)}>X</button>
+        </li>
+
+      </section>
     );
   }
 }
 
-let mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
   return {
-    categories: state,
+    expenses: state.expenses[props.category.id],
   };
 };
 
-let mapDispatchToProps = (dispatch, getState) => {
+const mapDispatchToProps = (dispatch, getState) => {
   return {
-    categoryUpdate: category => dispatch(categoryUpdate(category)),
-    categoryDelete: category => dispatch(categoryDelete(category)),
-
+    categoryUpdate: (category) => dispatch(categoryUpdate(category)),
+    categoryDelete: (category) => dispatch(categoryDelete(category)),
+    expenseCreate: (expense) => dispatch(expenseCreate(expense)),
   };
 };
-
-//we dont' need access to the whole store here so we use a dispatch just to update. so we use the mapDispatchToProps instead of the mapStateToProps (which is the whole state store)
-
-export default connect(null, mapDispatchToProps)(CategoryItem);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem);

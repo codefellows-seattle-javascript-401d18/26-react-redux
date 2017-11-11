@@ -21,7 +21,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <section className="expense-list">
+      <section className="budget-tracker">
         <Provider store={store}>
           <BrowserRouter>
             <section>

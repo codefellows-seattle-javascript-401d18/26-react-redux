@@ -8,10 +8,18 @@ Redux- used for handling the state within an app
 Babelrc- a compiler for using ES6
 webpack- used to bundle our assets
 
-To confirm things are working in chrome, type this in terminal:
+To confirm things are rendering in the chrome browser, type this in terminal:
 ```
 npm run watch
 ```
+
+#### Notes to myself:
+- Currying-- binds the first two arguments with the third. This is currying. 1st- state 2nd- dipatch and getState 3rd- . Bind methods.
+
+```js
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);
+```
+
 
 ## Learning Objectives
 * We will be able to use redux with react
@@ -115,27 +123,14 @@ ____________________________________________________________________________
 ![cf](https://i.imgur.com/7v5ASc8.png) 27: Combining Reducers
 ======
 
-## Submission Instructions
-* continue working on the fork you created from lab 26
-* open a **new branch** for today's assignment
-* upon completion, create a **new pull request** in github
-* submit a link to your PR in canvas
+#### Documentation
+- We don't need props anymore because...
+-
 
 ## Learning Objectives
-* students will be able to combine reducers to simplify the management of complex application states
-* students will continue to work with the fundamental principles of redux to gain a better understanding on state management
+* We will be able to combine reducers to simplify the management of complex application states
+* We will continue to work with the fundamental principles of redux to gain a better understanding on state management
 
-## Requirements
-#### Configuration  
-* `README.md`
-* `.babelrc`
-* `.gitignore`
-* `package.json`
-* `webpack.config.js`
-* `src/**`
-* `src/main.js`
-* `src/style`
-* `src/style/main.scss`
 
 #### Feature Tasks
 ##### Expense
@@ -196,3 +191,76 @@ App
 * should have a button that will delete the expense from the appState `onClick`
 * should display the `name` and `price` of the component
 * should display an `ExpenseForm` that will enable the user to update the expense in the app state
+
+#### Common Errors during refactoring
+
+Problem:
+This error message within terminal after npm run watch.
+```
+ERROR in ./src/reducer/card.js
+Module build failed: SyntaxError: Unexpected token (8:34)
+
+   6 |
+   7 |   switch(type) {
+>  8 |   case 'CATEGORY_CREATE': return {...state, [payload.id]:[]};
+     |                                   ^
+   9 |   case 'CATEGORY_DELETE': return {...state, [payload.id]: null};
+  10 |
+  11 |   case 'CARD_CREATE':
+```
+Solution:
+I updated my .Babelrc file to include the rest-spread plugin:
+```
+{
+  "presets": ["es2015", "react"],
+  "plugins": ["transform-object-rest-spread"]
+}
+```
+
+Problem:
+My new card/new expense button was not rendering the new card/new expense form when clicked.
+
+Solution:
+Adding the following to my expense-form's index.js file:
+```
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.onComplete(this.state);
+    if(!this.props.expense) {
+      this.setState({ price: '' });
+    }
+  }
+  ```
+
+
+Problem:
+After hitting submit on the 'create' button for creating a new expense item I get the following error (along with two others) in chrome console:
+```
+this.props.onComplete is not a function
+```
+Solution:
+
+
+Problem:
+The following chrome console error:
+
+The following is the chrome console message before the error. This means that the new category I'm attempting to add is getting into the categories array, but can't be rendered:
+
+  ```__STATE__ {categories: Array(1), expenses: {…}}):
+  ```
+But then I see the error:
+```
+index.js:62 Uncaught TypeError: Cannot read property '8159c12d-abcb-4f50-adb1-fdf7f14697f8' of undefined
+```
+Solution:
+
+
+
+#### Collaborators
+____________________________________________________________________________
+
+
+
+big changes:
+src/reducer/card.js- adding validation

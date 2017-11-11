@@ -1,6 +1,5 @@
-import {createStore} from 'redux'; //requiring in one piece of the redux package
-import reducer from '../reducer/category';//the reducer (category) is passed into the store
+import {createStore, applyMiddleware} from 'redux';
+import reporter from './redux-reporter';
+import reducer from '../reducer';
 
-export default () => createStore(reducer);
-
-//in `lib/store.js` export a function that will return a new redux store from your category reducer
+export default () => createStore(reducer, applyMiddleware(reporter));

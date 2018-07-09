@@ -31,7 +31,7 @@ class ExpenseItem extends React.Component {
           <button onClick={this.toggleExpense}>edit expense</button>
         </div>
 
-        {this.state.editExpense ? 
+        {this.state.editExpense ?
           <ExpenseForm
             id={this.props.expense.id}
             categoryID={this.props.expense.categoryID}

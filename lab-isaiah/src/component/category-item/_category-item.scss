@@ -1,18 +1,19 @@
 .category-item {
   text-align: center;
   display: inline-block;
-  margin-left: 5%;
+  margin-left: 20%;
   margin-bottom: 2em;
   padding: .25em;
   background: #258F07;
   border: .5px solid #1F630B;
+  width: 60%;
 
   h3 {
     border-top: 1px dotted black;
     padding-top: 1em;
   }
 
-  #delete-button {
+  .delete-button {
     display: block;
     float: right;
   }

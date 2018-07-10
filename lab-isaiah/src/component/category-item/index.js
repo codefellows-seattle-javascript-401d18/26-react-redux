@@ -1,58 +1,88 @@
 import './_category-item.scss';
 import React from 'react';
 import {connect} from 'react-redux';
+import ExpenseItem from '../expense-item';
+import ExpenseForm from '../expense-form';
 import CategoryForm from '../category-form';
+import {expenseCreate} from '../../action/expense-actions';
 import {categoryUpdate, categoryDelete} from '../../action/category-actions';
 
-import ExpenseForm from '../expense-form';
-import ExpenseItem from '../expense-item';
-import {expenseUpdate, expenseDelete} from '../../action/expense-actions';
 
 class CategoryItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: props.category ? props.category.title : '',
+      expenseForm: false,
+      categoryForm: false,
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleExpense = this.toggleExpense.bind(this);
+    this.toggleCategory = this.toggleCategory.bind(this);
   }
 
-  handleChange(e) {
-    this.setState({ title: e.target.value });
+  toggleExpense(e) {
+    this.setState({ expenseForm: !this.state.expenseForm });
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.onComplete(Object.assign({}, this.state));
+  toggleCategory(e) {
+    this.setState({ categoryForm: !this.state.categoryForm });
+  }
+
+  componentDidUpdate() {
+    console.log('isaiah was here');
   }
 
   render() {
     return (
-      <div className="category-item">
-        <button id="delete-button" onClick={() => this.props.categoryDelete(this.props.category)}>x</button>
+    <div className="category-item">
+      <div className="content-container">
+        <button className="delete-button" onClick={() => this.props.categoryDelete(this.props.category)}>X</button>
+        <button onClick={this.toggleCategory}>edit category</button>
+        <button onClick={this.toggleExpense}>new expense</button>
         <h3>{this.props.category.title}</h3>
-        <CategoryForm
-          buttonText="update"
-          onComplete={this.props.categoryUpdate}
-          category={this.props.category}/>
-        <h4>Expenses</h4>
-        <ExpenseForm
-          buttonText="update"
-          // onComplete={}
-          // expense={}
-          />
+
+        {this.state.categoryForm ?
+          <CategoryForm
+            buttonText="update"
+            onComplete={this.props.categoryUpdate}
+            category={this.props.category}
+            toggle={this.toggleCategory}/> :
+          undefined
+        }
       </div>
+      <div className="content-container">
+        {this.state.expenseForm ?
+          <ExpenseForm
+            buttonText="create"
+            categoryId={this.props.category.id}
+            onComplete={this.props.expenseCreate}
+            toggle={this.toggleExpense}/> :
+          undefined
+        }
+
+        {this.props.expenses[this.props.category.id].length ?
+          this.props.expenses[this.props.category.id].map(expense => <ExpenseItem key={expense.id} expense={expense}/>)
+          :
+          <h3>currently no expenses</h3>
+        }
+      </div>
+    </div>
     );
   }
 }
 
-let mapDispatchToProps = (dispatch, action) => {
+let mapStateToProps = (state) => {
   return {
-    categoryUpdate: category => dispatch(categoryUpdate(category)),
-    categoryDelete: category => dispatch(categoryDelete(category)),
+    expenses: state.expenses,
   };
 };
 
-export default connect(null, mapDispatchToProps)(CategoryItem);
+let mapDispatchToProps = (dispatch, getState) => {
+  return {
+    categoryUpdate: category => dispatch(categoryUpdate(category)),
+    categoryDelete: category => dispatch(categoryDelete(category)),
+    expenseCreate: expense => dispatch(expenseCreate(expense)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem);

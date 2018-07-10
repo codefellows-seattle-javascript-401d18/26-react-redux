@@ -33,37 +33,41 @@ class CategoryItem extends React.Component {
     return (
       <div className = "category-item">
         <div className= "content-container">
-          <button className = "remove" onClick={() => this.props.categoryDestroy(this.props.category)}>X</button>
+          <h2>{this.props.category.title}</h2>
+          <button className="remove" onClick={()=> this.props.categoryDestroy(this.props.category)}>X</button>
           <button onClick={this.toggleCategory}>edit category</button>
-          <button onClick={this.toggleExpense}>new expense</button>
-          <h3>{this.props.category.title}</h3>
+          <button onClick={this.toggleExpense}> new expense </button>
 
-    {this.state.categoryForm ?
-      <CategoryForm
-        buttonText="update"
-        onComplete = {this.props.categoryUpdate}
-        category = {this.props.category}
-        toggle = {this.toggleCategory}
-      /> :
-      undefined
-    }
-  </div>
-  <div className="content-container">
-    {this.state.expenseForm ?
-      <ExpenseForm
-        buttonText="log your expense"
-        categoryId = {this.props.category.id}
-        onComplete = {this.props.expenseCreate}
-        toggle={this.toggleExpense}/>: undefined
-    }
+          {this.state.categoryForm ?
+            <CategoryForm
+              buttonText='update'
+              category={this.props.category}
+              toggle={this.toggleCategory}
+              onComplete={this.props.categoryUpdate}/>
+              :
+              undefined
+          }
 
-    {this.props.expenses[this.props.category.id].length ?
-      this.props.expenses[this.props.category.id].map(expense => <ExpenseItem key={expense.id} expense={expense}/>)
-    :
-    <h3>No expenses, you must be rich!</h3>
-    }
-    </div>
-  </div>
+        <div className = 'expense-container'>
+          {this.state.expenseForm ?
+            <ExpenseForm
+            buttonText='create an expense!!'
+            categoryId={this.props.category.id}
+            toggle = {this.toggleExpense}
+            onComplete={this.props.expenseCreate}/>
+            :
+            undefined
+          }
+
+          {this.props.expenses[this.props.category.id].length ?
+            this.props.expenses[this.props.category.id].map(expense => <ExpenseItem key={expense.id} expense={expense}/>)
+            :
+            <h2> No expenses </h2>
+          }
+
+            </div>
+        </div>
+      </div>
     );
   }
 }
@@ -83,11 +87,3 @@ let mapDispatchToProps = (dispatch, getState) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem);
-
-// CategoryItem Component
-//
-// should display the category's name and budget
-// should display a delete button
-// onClick the category should be removed from the application state
-// should display a CategoryForm
-// onComplete the form should update the component in the application state
